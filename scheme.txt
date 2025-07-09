@@ -1,0 +1,8 @@
+| Element          | Color suggestion              | Tailwind example                   |
+| ---------------- | ----------------------------- | ---------------------------------- |
+| Background       | Dark navy / charcoal          | `bg-gray-900` or `bg-slate-900`    |
+| Card / list      | Slightly lighter dark         | `bg-gray-800` or `bg-slate-800`    |
+| Accent / primary | Electric blue / teal / purple | `text-blue-400` or `text-teal-400` |
+| Up price         | Green                         | `text-green-400`                   |
+| Down price       | Red                           | `text-red-400`                     |
+| Text             | Light gray / white            | `text-gray-100` or `text-white`    |
