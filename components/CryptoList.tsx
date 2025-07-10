@@ -20,7 +20,7 @@ export default function CryptoList({ coins }: { coins: Coin[] }) {
         >
           <div className="flex items-center space-x-2 mb-2">
             <img src={coin.image} alt={coin.name} className="w-6 h-6" />
-            <span className="text-white font-medium">
+            <span className="text-black font-medium">
               {coin.name} ({coin.symbol.toUpperCase()})
             </span>
           </div>

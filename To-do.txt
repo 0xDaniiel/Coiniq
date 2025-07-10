@@ -1,0 +1,3 @@
+- Update layout.tsx
+https://ui.aceternity.com/components/tracing-beam
+ https://www.coingecko.com/en/portfolio

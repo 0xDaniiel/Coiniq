@@ -1,15 +1,13 @@
-import { getTopCoins } from "@/lib/api";
-import ClientCoins from "@/components/ClientCoins";
+import Features from "@/components/Features";
+import Hero from "@/components/Hero";
 
-export default async function Home() {
-  const coins = await getTopCoins(); // defaults to USD
-
+const Home = () => {
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-white">
-        Coniq – Top Cryptocurrencies
-      </h1>
-      <ClientCoins initialCoins={coins} />
+    <main className="">
+      <Hero />
+      <Features />
     </main>
   );
-}
+};
+
+export default Home;

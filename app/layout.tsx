@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
+import Header from "@/components/Header";
+import { StickyBannerDemo } from "@/components/StickyBanner";
 import "./globals.css";
 
 const jost = Jost({
@@ -64,9 +66,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jost.className} antialiased min-h-screen bg-gray-900 text-gray-100`}
+        className={`${jost.className}   min-h-screen bg-black text-gray-100`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-6">{children}</div>
+        <StickyBannerDemo />
+        <Header />
+        <main className="">{children}</main>
       </body>
     </html>
   );
