@@ -5,4 +5,4 @@
 | Accent / primary | Electric blue / teal / purple | `text-blue-400` or `text-teal-400` |
 | Up price         | Green                         | `text-green-400`                   |
 | Down price       | Red                           | `text-red-400`                     |
-| Text             | Light gray / white            | `text-gray-100` or `text-white`    |
+| Text             | Light gray / white            | `text-white` or `text-white`    |

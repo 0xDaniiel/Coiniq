@@ -6,7 +6,7 @@ export default async function Home() {
 
   return (
     <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4 text-gray-100">
+      <h1 className="text-2xl font-bold mb-4 text-white">
         Coniq – Top Cryptocurrencies
       </h1>
       <ClientCoins initialCoins={coins} />

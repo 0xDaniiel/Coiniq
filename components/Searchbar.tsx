@@ -21,7 +21,7 @@ export default function Searchbar({
       value={query}
       onChange={handleChange}
       placeholder="Search coins..."
-      className="w-full p-2 mb-4 rounded bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:border-blue-400"
+      className="w-full p-2 mb-4 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-400"
     />
   );
 }

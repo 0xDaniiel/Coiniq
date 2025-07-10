@@ -1,6 +1,7 @@
 # 🪙 Coniq — Real-time Crypto Tracker & Charts
 
 Coniq is a web app built with **Next.js** that lets users:
+
 - Track real-time prices of the top 10 cryptocurrencies
 - View 7-day and 30-day historical price charts
 - Search and switch between coins
@@ -9,6 +10,7 @@ Coniq is a web app built with **Next.js** that lets users:
 ---
 
 ## 📦 Tech stack
+
 - **Next.js** (App Router)
 - **Tailwind CSS** — styling
 - **Axios** — API requests
@@ -18,6 +20,7 @@ Coniq is a web app built with **Next.js** that lets users:
 ---
 
 ## ⚙️ Features
+
 - Show real-time prices and market data
 - Historical price charts
 - Dynamic coin pages (`/coin/[id]`)
@@ -28,22 +31,24 @@ Coniq is a web app built with **Next.js** that lets users:
 
 ## 📂 Project structure
 
+```
 /app
-  ├── page.tsx            → Homepage
-  ├── coin/[id]/page.tsx  → Dynamic coin detail page
+├── page.tsx → Homepage
+├── coin/[id]/page.tsx → Dynamic coin detail page
 /components
-  ├── CryptoList.tsx      → List of coins on homepage
-  ├── Chart.tsx           → Chart component
-  ├── Searchbar.tsx       → Search bar
+├── CryptoList.tsx → List of coins on homepage
+├── Chart.tsx → Chart component
+├── Searchbar.tsx → Search bar
 /lib
-  └── api.ts              → Functions to call CoinGecko API
+└── api.ts → Functions to call CoinGecko API
 /public
-  └── favicon.ico
+└── favicon.ico
 /styles
-  └── globals.css
-
+└── globals.css
 
 ## 📈 Data source
+```
+
 - [CoinGecko API](https://www.coingecko.com/en/api) — free, no API key required
 
 ## 📄 License
