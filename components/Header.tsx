@@ -3,13 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Cryptocurrencies", href: "/cryptocurrencies" },
-  { name: "Exchanges", href: "/exchanges" },
-  { name: "NFT", href: "/nft" },
-];
+import { navLinks } from "@/lib/data";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

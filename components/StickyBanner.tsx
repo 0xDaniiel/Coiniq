@@ -14,11 +14,8 @@ export function StickyBannerDemo() {
         <p>
           Introducing Coniq: track live crypto prices & build your personal
           portfolio — now live in beta.{" "}
-          <a
-            href="/cryptocurrencies"
-            className="transition duration-200 hover:underline"
-          >
-            Tracker
+          <a href="/#about" className="transition duration-200 hover:underline">
+            See more..
           </a>
         </p>
       </div>

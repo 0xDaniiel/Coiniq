@@ -1,3 +1,5 @@
 - Update layout.tsx
+- update dashboard image 
+- update drawer for crypto
 https://ui.aceternity.com/components/tracing-beam
  https://www.coingecko.com/en/portfolio

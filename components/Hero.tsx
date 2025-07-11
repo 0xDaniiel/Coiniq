@@ -12,12 +12,13 @@ const Hero = () => {
 
       <h1
         className={cn(
-          "md:text-5xl text-3xl font-semibold text-white relative z-20 text-center"
+          "md:text-5xl text-3xl font-semibold text-white relative z-20 text-center px-5"
         )}
       >
-        Track Your Coins & NFTs in Real Time
+        Track Your <span className="text-blue-400">Coins & NFTs </span> in Real
+        Time
       </h1>
-      <p className="text-center mt-3 text-neutral-300 relative z-20 max-w-2xl px-4">
+      <p className="text-center mt-3 text-neutral-300 relative z-20 max-w-2xl px-5">
         Live prices, historical charts, and your own crypto & NFT portfolio —
         all in one simple dashboard.
       </p>

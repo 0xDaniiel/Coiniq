@@ -3,6 +3,7 @@ import { Jost } from "next/font/google";
 import Header from "@/components/Header";
 import { StickyBannerDemo } from "@/components/StickyBanner";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -11,7 +12,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Coniq — Real-time Crypto Tracker & Charts",
+  title: "Coniq | Real-time Crypto Tracker & Charts",
   description:
     "Track live prices, charts, and trends for the top cryptocurrencies. Built with Next.js & CoinGecko API.",
   icons: {
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   creator: "Daniel",
   metadataBase: new URL("https://coniq.vercel.app"), // replace with my domain
   openGraph: {
-    title: "Coniq — Real-time Crypto Tracker & Charts",
+    title: "Coniq | Real-time Crypto Tracker & Charts",
     description:
       "Track live prices and charts for the top cryptocurrencies with Coniq.",
     url: "https://coniq.vercel.app",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coniq — Real-time Crypto Tracker & Charts",
+    title: "Coniq | Real-time Crypto Tracker & Charts",
     description:
       "Track live prices and charts for the top cryptocurrencies with Coniq.",
     images: ["/og-image.png"],
@@ -70,7 +71,8 @@ export default function RootLayout({
       >
         <StickyBannerDemo />
         <Header />
-        <main className="">{children}</main>
+        {children}
+        <Footer />
       </body>
     </html>
   );
