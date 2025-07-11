@@ -3,13 +3,13 @@ import { Home, Search, BarChart, Star, Image, Briefcase } from "lucide-react";
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#about" },
-  { name: "Charts", href: "/charts" },
+  { name: "Charts", href: "/dashboard/coins" },
 ];
 
 export const items = [
   {
     title: "Dashboard",
-    url: "/dashboard",
+    url: "/dashboard/",
     icon: Home,
   },
   {
