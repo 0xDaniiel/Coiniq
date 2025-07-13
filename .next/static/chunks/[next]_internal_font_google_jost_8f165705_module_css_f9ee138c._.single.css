@@ -1,0 +1,20 @@
+/* [next]/internal/font/google/jost_8f165705.module.css [app-client] (css) */
+@font-face {
+  font-family: Jost Fallback;
+  src: local(Arial);
+  ascent-override: 111.45%;
+  descent-override: 39.06%;
+  line-gap-override: 0.0%;
+  size-adjust: 96.01%;
+}
+
+.jost_8f165705-module__5-sqMW__className {
+  font-family: Jost, Jost Fallback;
+  font-style: normal;
+}
+
+.jost_8f165705-module__5-sqMW__variable {
+  --font-sans: "Jost", "Jost Fallback";
+}
+
+/*# sourceMappingURL=%5Bnext%5D_internal_font_google_jost_8f165705_module_css_f9ee138c._.single.css.map*/
