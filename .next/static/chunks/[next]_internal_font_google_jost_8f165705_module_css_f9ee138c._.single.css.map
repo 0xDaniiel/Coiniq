@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[next]/internal/font/google/jost_8f165705.module.css"],"sourcesContent":["@font-face {\n    font-family: 'Jost Fallback';\n    src: local(\"Arial\");\n    ascent-override: 111.45%;\ndescent-override: 39.06%;\nline-gap-override: 0.00%;\nsize-adjust: 96.01%;\n\n}\n.className {\n    font-family: 'Jost', 'Jost Fallback';\n    font-style: normal;\n\n}\n.variable {\n    --font-sans: 'Jost', 'Jost Fallback';\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;AASA;;;;;AAKA","ignoreList":[0]}}]
-}

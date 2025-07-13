@@ -3,27 +3,27 @@ import { Home, Search, BarChart, Star, Image, Briefcase } from "lucide-react";
 export const items = [
   {
     title: "Dashboard",
-    url: "/dashboard/",
+    url: "/",
     icon: Home,
   },
   {
     title: "Cryptocurrencies",
-    url: "/dashboard/coins",
+    url: "/coins",
     icon: Search,
   },
   {
     title: "Exchanges",
-    url: "/dashboard/exchanges",
+    url: "/exchanges",
     icon: BarChart,
   },
   {
     title: "NFTs",
-    url: "/dashboard/nfts",
+    url: "/nfts",
     icon: Image,
   },
   {
     title: "Favorites",
-    url: "/dashboard/favorites",
+    url: "/favorites",
     icon: Star,
   },
 ];

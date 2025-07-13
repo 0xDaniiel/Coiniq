@@ -29,10 +29,8 @@ export default function RootLayout({
         <SidebarProvider>
           <div className="flex min-h-screen">
             <AppSidebar />
-            <main className="flex-1 bg-black">
-              <SidebarTrigger />
-              {children}
-            </main>
+            <SidebarTrigger />
+            {children}
           </div>
         </SidebarProvider>
       </body>
