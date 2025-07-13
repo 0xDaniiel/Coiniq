@@ -1,5 +1,10 @@
-- Update layout.tsx
-- update dashboard image 
-- update drawer for crypto
+- Update layout.tsx images and links
+- update landing page images
+- update metadata for charts
+- update chart and get started ( in hero) link to the sub domain which is the dashboard
+- Fix UI for landing page and build errors
+- Remove search bar from landing page
+- preview image for landing page
+- give Dashbaord a different bg color
 https://ui.aceternity.com/components/tracing-beam
  https://www.coingecko.com/en/portfolio
