@@ -13,14 +13,14 @@ const Home = () => {
   return (
     <main className="">
       <Hero />
+      <Stats />
       <Features />
       <About />
-      <Preview />
       <HowItWorks />
-      <Stats />
+      <Preview />
+      <AnimatedTestimonialsDemo />
       <Roadmap />
       <FAQ />
-      <AnimatedTestimonialsDemo />
       <CTA />
     </main>
   );

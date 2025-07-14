@@ -1,7 +1,8 @@
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/#about" },
-  { name: "How it works", href: "/#learn" },
+  { name: "Features", href: "/#features" },
+  { name: "Roadmap", href: "/#roadmap" },
 ];
 
 export const liveStats = [
@@ -46,5 +47,62 @@ export const testimonials = [
     name: "Lisa Thompson",
     designation: "Web3 Community Member",
     src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+export const useCoiniq = [
+  {
+    title: "Search & add coins",
+    desc: "Instantly find your favorite cryptocurrencies to watch and track.",
+  },
+  {
+    title: "Track & analyze",
+    desc: "See live prices, historical charts, and market trends in real time.",
+  },
+  {
+    title: "Build your portfolio",
+    desc: "Create unlimited lists and follow top trending portfolios easily.",
+  },
+];
+
+export const roadmap = [
+  {
+    title: "Q4 2025",
+    items: ["Launch MVP", "Track top 100 coins", "Basic NFT tracking"],
+  },
+  {
+    title: "Q1 2026",
+    items: ["Add wallet integration", "Portfolio export", "Trending alerts"],
+  },
+  {
+    title: "Q2 2026",
+    items: [
+      "Support for more chains",
+      "Social sharing",
+      "Mobile-friendly dashboard",
+    ],
+  },
+];
+
+export const faqs = [
+  {
+    question: "Is it free to use?",
+    answer:
+      "Yes! You can track coins and NFTs without signing up or paying anything.",
+  },
+  {
+    question: "Do I need to create an account?",
+    answer:
+      "No account needed — just open the tracker and start adding assets to your watchlist.",
+  },
+  {
+    question: "Does it support NFTs?",
+    answer:
+      "Yes! You can track popular NFTs and collections alongside your crypto coins.",
+  },
+  {
+    question: "Where does your data come from?",
+    answer:
+      "We aggregate data from trusted providers to give you live prices and historical charts.",
   },
 ];

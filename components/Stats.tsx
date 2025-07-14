@@ -5,7 +5,7 @@ import { liveStats } from "@/lib/data";
 
 const Stats = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12 text-gray-100 text-center">
+    <section className="max-w-7xl mx-auto px-4 py-12 md:py-20 text-gray-100 text-center">
       <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-blue-400">
         Trusted by crypto enthusiasts worldwide
       </h2>

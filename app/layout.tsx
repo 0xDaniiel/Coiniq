@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jost.className}   min-h-screen bg-black text-gray-100`}
+        className={`${jost.className} min-h-screen bg-black text-gray-100 scroll-smooth`}
       >
         <StickyBannerDemo />
         <Header />

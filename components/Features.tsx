@@ -10,7 +10,8 @@ const features = [
   {
     icon: <BarChart className="w-8 h-8 text-blue-500" />,
     title: "Detailed Charts",
-    description: "Analyze historical data and market trends with interactive charts.",
+    description:
+      "Analyze historical data and market trends with interactive charts.",
   },
   {
     icon: <Wallet className="w-8 h-8 text-blue-500" />,
@@ -21,7 +22,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-16 bg-transparent">
+    <section className="py-12 md:py-20 bg-transparent" id="features">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-semibold text-center mb-8 text-blue-400">
           Powerful Features to Track Your Assets

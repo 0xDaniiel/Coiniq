@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CTA = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-16 text-center">
+    <section className="max-w-4xl mx-auto px-4 py-12 md:py-20 text-center">
       <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-blue-400">
         Ready to start tracking?
       </h2>

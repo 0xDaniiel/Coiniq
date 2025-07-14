@@ -1,27 +1,12 @@
 import React from "react";
-
-const roadmap = [
-  {
-    title: "Q3 2025",
-    items: ["Launch MVP", "Track top 100 coins", "Basic NFT tracking"],
-  },
-  {
-    title: "Q4 2025",
-    items: ["Add wallet integration", "Portfolio export", "Trending alerts"],
-  },
-  {
-    title: "Q1 2026",
-    items: [
-      "Support for more chains",
-      "Social sharing",
-      "Mobile-friendly dashboard",
-    ],
-  },
-];
+import { roadmap } from "@/lib/data";
 
 const Roadmap = () => {
   return (
-    <section className="max-w-5xl mx-auto px-4 py-16 text-gray-100">
+    <section
+      className="max-w-5xl mx-auto px-4 py-12 md:py-20 text-gray-100"
+      id="roadmap"
+    >
       <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-blue-400 text-center">
         Product Roadmap
       </h2>
@@ -29,7 +14,15 @@ const Roadmap = () => {
         {roadmap.map((phase, idx) => (
           <div
             key={idx}
-            className="bg-gray-800/60 backdrop-blur rounded-xl p-6"
+            className="
+              bg-gray-900 
+              rounded-xl 
+              p-8 
+              border border-blue-500/30 
+              hover:border-blue-500 
+              shadow-md hover:shadow-blue-500/20 
+              transition-all duration-300
+            "
           >
             <h3 className="text-xl font-semibold mb-2 text-blue-300">
               {phase.title}
