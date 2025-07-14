@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Daniel" }],
   creator: "Daniel",
-  metadataBase: new URL("https://coniq.vercel.app"), // replace with my domain
+  metadataBase: new URL("https://coiniq-eight.vercel.app/"),
   openGraph: {
     title: "Coniq | Real-time Crypto Tracker & Charts",
     description:
       "Track live prices and charts for the top cryptocurrencies with Coniq.",
-    url: "https://coniq.vercel.app",
+    url: "https://coiniq-eight.vercel.app/",
     siteName: "Coniq",
     images: [
       {
