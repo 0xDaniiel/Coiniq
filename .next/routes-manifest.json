@@ -26,6 +26,36 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/coins",
+      "regex": "^/coins(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/coins(?:/)?$"
+    },
+    {
+      "page": "/exchanges",
+      "regex": "^/exchanges(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/exchanges(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/favorites",
+      "regex": "^/favorites(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favorites(?:/)?$"
+    },
+    {
+      "page": "/nfts",
+      "regex": "^/nfts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/nfts(?:/)?$"
     }
   ],
   "dataRoutes": [],

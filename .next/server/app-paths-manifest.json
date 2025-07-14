@@ -1,1 +1,9 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/exchanges/page": "app/exchanges/page.js",
+  "/coins/page": "app/coins/page.js",
+  "/favorites/page": "app/favorites/page.js",
+  "/page": "app/page.js",
+  "/nfts/page": "app/nfts/page.js"
+}
