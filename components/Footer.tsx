@@ -3,39 +3,17 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-400 py-8">
+    <footer className="bg-gray-900 text-gray-400 py-4">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-        <div className="text-sm">© 2025 Coniq. All rights reserved.</div>
-        <nav className="flex space-x-4">
-          <Link href="/" className="hover:text-blue-400 transition-colors">
-            Home
-          </Link>
-          <Link
-            href="/tracker"
-            className="hover:text-blue-400 transition-colors"
-          >
-            Tracker
-          </Link>
-          <Link href="/about" className="hover:text-blue-400 transition-colors">
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="hover:text-blue-400 transition-colors"
-          >
-            Contact
-          </Link>
-        </nav>
+        <div className="text-sm">&copy; 2025 Coniq. All rights reserved.</div>
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-blue-400 transition-colors">
+          <Link
+            href="https://x.com/0xDaniiel"
+            target="_blank"
+            className="hover:text-blue-400 transition-colors flex items-center"
+          >
             Twitter
-          </a>
-          <a href="#" className="hover:text-blue-400 transition-colors">
-            Telegram
-          </a>
-          <a href="#" className="hover:text-blue-400 transition-colors">
-            GitHub
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

@@ -23,12 +23,12 @@ const Hero = () => {
         all in one simple dashboard.
       </p>
 
-      <Link
+      {/* <Link
         href="/"
         className="mt-8 relative z-20 inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
       >
         Start Tracking Now
-      </Link>
+      </Link> */}
     </div>
   );
 };

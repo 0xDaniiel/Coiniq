@@ -3,8 +3,8 @@
 - update metadata for charts
 - update chart and get started ( in hero) link to the sub domain which is the dashboard
 - Fix UI for landing page and build errors
-- Remove search bar from landing page
 - preview image for landing page
 - give Dashbaord a different bg color
 https://ui.aceternity.com/components/tracing-beam
  https://www.coingecko.com/en/portfolio
+https://www.figma.com/design/O0aJJeQaxxJPPc3XOwvG63/Cryptocurrency-Dashboard---FREEBIE--Community-?node-id=301-127&p=f&t=L4pniR4orhB668A4-0

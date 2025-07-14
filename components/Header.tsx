@@ -37,11 +37,12 @@ const Header = () => {
 
         {/* Searchbar */}
         <div className="hidden md:block">
-          <input
-            type="search"
-            placeholder="Search coins..."
-            className="p-2 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:border-blue-400"
-          />
+          <Link
+            href="/"
+            className=" inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+          >
+            Get started
+          </Link>
         </div>
 
         {/* Hamburger icon */}
@@ -68,11 +69,12 @@ const Header = () => {
               {link.name}
             </Link>
           ))}
-          <input
-            type="text"
-            placeholder="Search coins..."
-            className="w-full p-2 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:border-blue-400"
-          />
+          <Link
+            href="/"
+            className="mt-8  inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+          >
+            Get started
+          </Link>
         </div>
       )}
     </header>
