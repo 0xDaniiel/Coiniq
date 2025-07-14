@@ -19,7 +19,7 @@ const About = () => {
           responsive design.
         </p>
         <p className="mb-8 text-lg leading-relaxed">
-          Whether you're a casual investor or a crypto enthusiast, Coniq makes
+          Whether you&apos;re a casual investor or a crypto enthusiast, Coniq makes
           it simple to stay updated on top cryptocurrencies, explore exchanges,
           discover NFTs, and personalize your watchlist — all in one place.
         </p>
