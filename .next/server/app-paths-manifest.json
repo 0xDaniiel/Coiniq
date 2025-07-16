@@ -2,5 +2,7 @@
   "/coins/page": "app/coins/page.js",
   "/exchanges/page": "app/exchanges/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/favorites/page": "app/favorites/page.js",
+  "/nfts/page": "app/nfts/page.js",
   "/page": "app/page.js"
 }
