@@ -10,10 +10,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className=" ">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Coniq</SidebarGroupLabel>
@@ -22,10 +23,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon className="w-4 h-4" />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

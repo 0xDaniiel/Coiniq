@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} `}>
+      <body className={`${montserrat.className} bg-black text-gray-100`}>
         <SidebarProvider>
           <div className="flex min-h-screen">
             <AppSidebar />
