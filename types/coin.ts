@@ -7,5 +7,4 @@ export type Coin = {
   market_cap: number;
   market_cap_rank: number;
   price_change_percentage_24h: number;
-  // other fields   (e.g., price_change_percentage_24h etc.)
 };

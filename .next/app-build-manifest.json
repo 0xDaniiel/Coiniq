@@ -28,6 +28,21 @@
       "static/chunks/_e69f0d32._.js",
       "static/chunks/_a894171a._.js"
     ],
+    "/exchanges/page": [
+      "static/chunks/[root-of-the-server]__45846b3b._.css",
+      "static/chunks/node_modules_71cdb970._.js",
+      "static/chunks/_c8dfcb2c._.js",
+      "static/chunks/app_layout_tsx_007ca514._.js",
+      "static/chunks/app_exchanges_page_tsx_2fdd217c._.js",
+      "static/chunks/app_exchanges_page_tsx_88629bee._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_17e42fcf._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_0eb1e458._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636ac3._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_a894171a._.js"
+    ],
     "/page": [
       "static/chunks/[root-of-the-server]__67e299ed._.css",
       "static/chunks/node_modules_71cdb970._.js",
