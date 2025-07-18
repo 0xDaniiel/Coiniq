@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import { Montserrat } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const montserrat = Montserrat({
+const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
   variable: "--font-sans",
@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} bg-gray-900 text-gray-100`}>
+      <body className={`${roboto.className} bg-gray-900 text-gray-100`}>
         <SidebarProvider>
           <div className="flex min-h-screen">
             <AppSidebar />
