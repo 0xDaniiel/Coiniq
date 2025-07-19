@@ -1,78 +1,88 @@
 "use client";
 import { useState, useEffect } from "react";
+import { fetchTopNFTs } from "@/lib/coingecko";
+import NFTModal from "@/components/NFTModal";
 
 export default function Page() {
-  const [search, setSearch] = useState("");
-  const [sortAsc, setSortAsc] = useState(true);
+  const [nfts, setNFTs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const nfts = [
-    { name: "Cool Cats", price: 1.2 },
-    { name: "Bored Ape", price: 12 },
-    { name: "Doodles", price: 0.8 },
-  ];
+  const [search, setSearch] = useState("");
+  const [selectedNFT, setSelectedNFT] = useState<any | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
+    const load = async () => {
+      try {
+        const data = await fetchTopNFTs();
+        setNFTs(data);
+      } catch (e) {
+        console.error("Error loading NFTs", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
   }, []);
 
-  const filtered = nfts
-    .filter((n) => n.name.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => (sortAsc ? a.price - b.price : b.price - a.price));
+  const filtered = nfts.filter((nft) =>
+    nft.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-      <h1 className="text-2xl font-semibold text-blue-400">NFTs</h1>
-      <p className="text-gray-400">Explore trending NFTs and collections.</p>
+    <div className="w-full px-4 py-6 bg-[#0f172a] text-white min-h-screen">
+      <h1 className="text-3xl font-bold mb-4 text-blue-400">NFT Market</h1>
 
-      <div className="flex flex-col sm:flex-row gap-4">
-        <input
-          type="text"
-          placeholder="Search NFTs..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 bg-gray-800 border border-gray-700 rounded px-3 py-2 text-gray-200 placeholder-gray-500 focus:border-blue-500 outline-none"
-        />
-        <button
-          onClick={() => setSortAsc(!sortAsc)}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-        >
-          Sort by price {sortAsc ? "↑" : "↓"}
-        </button>
-      </div>
+      <input
+        type="text"
+        placeholder="Search NFTs..."
+        className="mb-6 bg-gray-800 px-4 py-2 rounded border border-gray-700 w-full sm:w-64"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       {loading ? (
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {[...Array(6)].map((_, idx) => (
-            <div
-              key={idx}
-              className="bg-gray-800 rounded-xl h-60 animate-pulse"
-            />
-          ))}
-        </div>
+        <div>Loading...</div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((nft, idx) => (
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {filtered.map((nft) => (
             <div
-              key={idx}
-              className="bg-gray-900 rounded-xl overflow-hidden border border-blue-500/10 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10 transition"
+              key={nft.id}
+              onClick={() => setSelectedNFT(nft)}
+              className="bg-gray-900 rounded-lg overflow-hidden cursor-pointer border border-gray-700 hover:border-blue-500 transition"
             >
-              <div className="h-40 bg-gray-700" /> {/* placeholder image */}
               <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-gray-300 font-medium">{nft.name}</span>
-                  <button className="text-yellow-400 hover:text-yellow-500">
-                    ★
-                  </button>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-lg font-semibold">{nft.name}</h2>
+                  <span className="text-sm text-gray-400">
+                    {nft.symbol?.toUpperCase()}
+                  </span>
                 </div>
-                <div className="text-gray-400 text-sm">
-                  Price: {nft.price} ETH
+
+                {nft.image?.small ? (
+                  <img
+                    src={nft.image.small}
+                    alt={nft.name}
+                    className="w-full h-40 object-contain"
+                  />
+                ) : (
+                  <div className="h-40 flex items-center justify-center text-gray-500">
+                    No Image
+                  </div>
+                )}
+
+                <div className="mt-2 text-sm text-gray-400">
+                  Floor: ${nft.floor_price?.usd?.toLocaleString() || "N/A"}
+                </div>
+                <div className="text-sm text-gray-400">
+                  Volume (24h): ${nft.volume_24h_usd?.toLocaleString() || "N/A"}
                 </div>
               </div>
             </div>
           ))}
         </div>
+      )}
+
+      {selectedNFT && (
+        <NFTModal nft={selectedNFT} onClose={() => setSelectedNFT(null)} />
       )}
     </div>
   );

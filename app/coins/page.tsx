@@ -8,8 +8,9 @@ export default function Page() {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
   const [filter, setFilter] = useState("all");
+  const [selectedCoin, setSelectedCoin] = useState<any>(null); // full coin data
+  const [modalLoading, setModalLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +60,22 @@ export default function Page() {
     return `$${cap.toLocaleString()}`;
   };
 
+  const openCoinModal = async (coinId: string) => {
+    try {
+      setModalLoading(true);
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${coinId}`
+      );
+      if (!res.ok) throw new Error("Failed to fetch full coin data");
+      const data = await res.json();
+      setSelectedCoin(data);
+    } catch (error) {
+      console.error("Error loading coin details", error);
+    } finally {
+      setModalLoading(false);
+    }
+  };
+
   return (
     <div className="w-full px-4 py-6 bg-[#0f172a] min-h-screen text-white">
       <h1 className="text-3xl font-bold mb-4 text-blue-400">
@@ -97,8 +114,8 @@ export default function Page() {
           {filteredCoins.map((coin) => (
             <div
               key={coin.id}
-              onClick={() => setSelectedCoin(coin)}
-              className="bg-gray-900 rounded-xl p-4 border border-blue-500/20 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10   duration-3000 hover:scale-[1.02] cursor-pointer transition-transform"
+              onClick={() => openCoinModal(coin.id)}
+              className="bg-gray-900 rounded-xl p-4 border border-blue-500/20 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10 duration-3000 hover:scale-[1.02] cursor-pointer transition-transform"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -138,7 +155,11 @@ export default function Page() {
         </div>
       )}
 
-      {selectedCoin && (
+      {modalLoading && (
+        <p className="text-gray-400 mt-4">Loading coin details...</p>
+      )}
+
+      {selectedCoin && !modalLoading && (
         <CoinModal coin={selectedCoin} onClose={() => setSelectedCoin(null)} />
       )}
     </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchExchanges } from "@/lib/coingecko";
 import type { Exchange } from "@/types/exchange";
 
-export default function page() {
+export default function Page() {
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
   const [search, setSearch] = useState("");
   const [sortAsc, setSortAsc] = useState(true);
@@ -29,7 +29,8 @@ export default function page() {
   const formatVol = (vol: number) => `$${(vol / 1_000).toFixed(1)}k BTC`;
 
   return (
-    <div className="w-full px-4 py-6 bg-[#0f172a] min-h-screen text-white">
+    // <div className="fixed inset-0 w-full min-h-screen overflow-y-auto bg-[#0f172a] text-white px-4 py-6">
+    <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-6">
       <h1 className="text-3xl font-bold mb-4 text-blue-400">Exchanges</h1>
       <p className="text-gray-400 mb-4">Explore top crypto exchanges</p>
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
@@ -55,8 +56,10 @@ export default function page() {
           <option value="top10">Top 10 by Trust Score</option>
         </select>
       </div>
+
+      {/* EXCHANGE CARDS  */}
       {loading ? (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="bg-gray-800 rounded-xl p-4 animate-pulse">
               <div className="h-4 bg-gray-700 rounded w-24 mb-2"></div>
@@ -66,7 +69,7 @@ export default function page() {
           ))}
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {filtered.map((ex) => (
             <div
               key={ex.id}
