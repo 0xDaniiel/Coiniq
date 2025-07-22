@@ -5,9 +5,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
+  weight: ["400", "500"],
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
