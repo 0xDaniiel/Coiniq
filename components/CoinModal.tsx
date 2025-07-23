@@ -1,6 +1,7 @@
 "use client";
 import { X } from "lucide-react";
 import type { CoinDetail } from "@/types/coin";
+import Image from "next/image";
 
 interface CoinModalProps {
   coin: CoinDetail;
@@ -39,7 +40,7 @@ export default function CoinModal({ coin, onClose }: CoinModalProps) {
         </button>
 
         <div className="flex flex-col items-center text-center">
-          <img
+          <Image
             src={image?.large || image?.small}
             alt={name}
             className="h-20 w-20 mb-4 rounded"

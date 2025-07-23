@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { fetchExchanges } from "@/lib/coingecko";
 import type { Exchange } from "@/types/exchange";
+import Image from "next/image";
 
 export default function Page() {
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
@@ -49,7 +50,7 @@ export default function Page() {
         </button>
         <select
           value={topFilter}
-          onChange={(e) => setTopFilter(e.target.value as any)}
+          onChange={(e) => setTopFilter(e.target.value as "all" | "top10")}
           className="bg-gray-800 border border-gray-700 text-gray-100 rounded px-4 py-2"
         >
           <option value="all">All Exchanges</option>
@@ -77,7 +78,7 @@ export default function Page() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <img
+                  <Image
                     src={ex.image}
                     alt={ex.name}
                     className="w-8 h-8 rounded-full"

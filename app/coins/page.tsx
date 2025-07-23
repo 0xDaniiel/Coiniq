@@ -1,15 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import { fetchTopCoins } from "@/lib/coingecko";
-import type { Coin } from "@/types/coin";
+import type { Coin, CoinDetail } from "@/types/coin";
 import CoinModal from "@/components/CoinModal";
+import Image from "next/image";
 
 export default function Page() {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
-  const [selectedCoin, setSelectedCoin] = useState<any>(null); // full coin data
+  const [selectedCoin, setSelectedCoin] = useState<CoinDetail | null>(null);
   const [modalLoading, setModalLoading] = useState(false);
 
   useEffect(() => {
@@ -119,7 +120,7 @@ export default function Page() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <img
+                  <Image
                     src={coin.image}
                     alt={coin.name}
                     className="w-8 h-8 rounded-full"

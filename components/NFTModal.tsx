@@ -1,13 +1,14 @@
 "use client";
 import { X } from "lucide-react";
+import type { NFT } from "@/types/nft";
+import Image from "next/image";
 
-export default function NFTModal({
-  nft,
-  onClose,
-}: {
-  nft: any;
+interface NFTModalProps {
+  nft: NFT;
   onClose: () => void;
-}) {
+}
+
+export default function NFTModal({ nft, onClose }: NFTModalProps) {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
       <div className="relative bg-[#0f172a] rounded-2xl shadow-lg max-w-lg w-full text-white overflow-hidden">
@@ -20,10 +21,12 @@ export default function NFTModal({
 
         {/* Image */}
         <div className="w-full h-48 bg-gray-800 flex items-center justify-center overflow-hidden">
-          {nft.image?.large ? (
-            <img
-              src={nft.image?.small}
+          {nft.image?.small ? (
+            <Image
+              src={nft.image.small}
               alt={nft.name}
+              width={160}
+              height={160}
               className="h-40 w-40 object-contain rounded mb-4"
             />
           ) : (

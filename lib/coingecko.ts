@@ -1,6 +1,7 @@
 // /lib/coingecko.ts
 import type { Coin } from "@/types/coin";
 import type { Exchange } from "@/types/exchange";
+import type { CoinDetail } from "@/types/coin";
 
 const BASE_URL = "https://api.coingecko.com/api/v3";
 
@@ -12,7 +13,8 @@ export async function fetchTopCoins(): Promise<Coin[]> {
   return res.json();
 }
 
-export async function fetchCoinDetails(id: string): Promise<any> {
+// ...
+export async function fetchCoinDetails(id: string): Promise<CoinDetail> {
   const res = await fetch(`${BASE_URL}/coins/${id}`);
   if (!res.ok) throw new Error("Failed to fetch coin details");
   return res.json();
@@ -34,7 +36,7 @@ export async function fetchTopNFTs() {
   const top = nftList.slice(0, 20);
 
   const results = await Promise.all(
-    top.map(async (nft: any) => {
+    top.map(async (nft: { id: string }) => {
       try {
         const detailRes = await fetch(`${BASE_URL}/nfts/${nft.id}`);
         if (!detailRes.ok) return null;

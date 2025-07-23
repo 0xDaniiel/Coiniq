@@ -1,13 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
+import type { NFT } from "@/types/nft";
 import { fetchTopNFTs } from "@/lib/coingecko";
 import NFTModal from "@/components/NFTModal";
+import Image from "next/image";
 
 export default function Page() {
-  const [nfts, setNFTs] = useState<any[]>([]);
+  // const [nfts, setNFTs] = useState<any[]>([]);
+  // const [selectedNFT, setSelectedNFT] = useState<any | null>(null);
+
+  const [nfts, setNFTs] = useState<NFT[]>([]);
+  const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
+
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [selectedNFT, setSelectedNFT] = useState<any | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -58,7 +64,7 @@ export default function Page() {
                 </div>
 
                 {nft.image?.small ? (
-                  <img
+                  <Image
                     src={nft.image.small}
                     alt={nft.name}
                     className="w-full h-40 object-contain"
