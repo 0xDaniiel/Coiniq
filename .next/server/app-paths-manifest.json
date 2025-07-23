@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/exchanges/page": "app/exchanges/page.js",
-  "/nfts/page": "app/nfts/page.js",
-  "/favorites/page": "app/favorites/page.js",
-  "/page": "app/page.js",
-  "/coins/page": "app/coins/page.js"
-}
