@@ -30,61 +30,89 @@ export default function CoinModal({ coin, onClose }: CoinModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-      <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md relative text-white">
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+      <div className="bg-white text-black rounded-2xl shadow-2xl w-full max-w-md relative p-6 space-y-4">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-300 hover:text-white"
+          className="absolute top-4 right-4 text-gray-600 hover:text-black"
         >
           <X />
         </button>
 
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center space-y-2">
           <Image
             src={image?.large || image?.small}
             alt={name}
-            className="h-20 w-20 mb-4 rounded"
+            width={80}
+            height={80}
+            className="rounded mb-2"
           />
-          <h2 className="text-2xl font-bold mb-2">{name}</h2>
-          <p className="text-gray-400 mb-1">Symbol: {symbol?.toUpperCase()}</p>
-          <p className="text-gray-400 mb-1">Rank: #{market_cap_rank}</p>
-          <p className="text-gray-400 mb-1">
-            Current Price: $
-            {market_data?.current_price?.usd?.toLocaleString() || "N/A"}
-          </p>
-          <p className="text-gray-400 mb-1">
-            Market Cap: $
-            {market_data?.market_cap?.usd?.toLocaleString() || "N/A"}
-          </p>
-          <p className="text-gray-400 mb-1">
-            24h Volume: $
-            {market_data?.total_volume?.usd?.toLocaleString() || "N/A"}
-          </p>
-          <p className="text-gray-400 mb-1">
-            All-Time High: ${market_data?.ath?.usd?.toLocaleString() || "N/A"}
-            <br />
-            <span className="text-sm text-gray-500">
-              on {formatDate(market_data?.ath_date?.usd)}
-            </span>
-          </p>
-          <p className="text-gray-400 mb-1">
-            All-Time Low: ${market_data?.atl?.usd?.toLocaleString() || "N/A"}
-            <br />
-            <span className="text-sm text-gray-500">
-              on {formatDate(market_data?.atl_date?.usd)}
-            </span>
-          </p>
-          <p className="text-gray-400 mb-1">
-            Algorithm: {hashing_algorithm || "N/A"}
-          </p>
-          <p className="text-gray-400 mb-1">
-            Genesis Date: {formatDate(genesis_date)}
-          </p>
-          <p className="text-gray-400 mb-1">
-            Categories: {categories?.slice(0, 2).join(", ") || "N/A"}
+          <h2 className="text-2xl font-bold">{name}</h2>
+          <p className="uppercase text-sm text-gray-600 tracking-wide">
+            {symbol}
           </p>
         </div>
+
+        <div className="space-y-2 text-sm border-t pt-4 text-gray-700">
+          <InfoRow label="Rank" value={`#${market_cap_rank || "N/A"}`} />
+          <InfoRow
+            label="Current Price"
+            value={`$${
+              market_data?.current_price?.usd?.toLocaleString() || "N/A"
+            }`}
+          />
+          <InfoRow
+            label="Market Cap"
+            value={`$${
+              market_data?.market_cap?.usd?.toLocaleString() || "N/A"
+            }`}
+          />
+          <InfoRow
+            label="24h Volume"
+            value={`$${
+              market_data?.total_volume?.usd?.toLocaleString() || "N/A"
+            }`}
+          />
+          <InfoRow
+            label="All-Time High"
+            value={`$${market_data?.ath?.usd?.toLocaleString() || "N/A"}`}
+            sub={`on ${formatDate(market_data?.ath_date?.usd)}`}
+          />
+          <InfoRow
+            label="All-Time Low"
+            value={`$${market_data?.atl?.usd?.toLocaleString() || "N/A"}`}
+            sub={`on ${formatDate(market_data?.atl_date?.usd)}`}
+          />
+          <InfoRow label="Algorithm" value={hashing_algorithm || "N/A"} />
+          <InfoRow label="Genesis Date" value={formatDate(genesis_date)} />
+          <InfoRow
+            label="Categories"
+            value={categories?.slice(0, 2).join(", ") || "N/A"}
+          />
+        </div>
       </div>
+    </div>
+  );
+}
+
+function InfoRow({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+}) {
+  return (
+    <div>
+      <div className="flex justify-between font-medium">
+        <span className="text-gray-600">{label}</span>
+        <span className="text-gray-800">{value}</span>
+      </div>
+      {sub && (
+        <div className="text-xs text-gray-500 mt-0.5 text-right">{sub}</div>
+      )}
     </div>
   );
 }

@@ -6,12 +6,8 @@ import NFTModal from "@/components/NFTModal";
 import Image from "next/image";
 
 export default function Page() {
-  // const [nfts, setNFTs] = useState<any[]>([]);
-  // const [selectedNFT, setSelectedNFT] = useState<any | null>(null);
-
   const [nfts, setNFTs] = useState<NFT[]>([]);
   const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
-
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -34,13 +30,13 @@ export default function Page() {
   );
 
   return (
-    <div className="w-full px-4 py-6 bg-[#0f172a] text-white min-h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-blue-400">NFT Market</h1>
+    <div className="w-full px-4 py-6 bg-white text-black min-h-screen">
+      <h1 className="text-3xl font-bold mb-4">NFT Market</h1>
 
       <input
         type="text"
         placeholder="Search NFTs..."
-        className="mb-6 bg-gray-800 px-4 py-2 rounded border border-gray-700 w-full sm:w-64"
+        className="mb-6 bg-white px-4 py-2 rounded border border-gray-300 text-black w-full sm:w-64"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -53,12 +49,12 @@ export default function Page() {
             <div
               key={nft.id}
               onClick={() => setSelectedNFT(nft)}
-              className="bg-gray-900 rounded-lg overflow-hidden cursor-pointer border border-gray-700 hover:border-blue-500 transition"
+              className="bg-white rounded-lg overflow-hidden cursor-pointer border border-gray-300 hover:shadow-md transition"
             >
               <div className="p-4">
                 <div className="flex justify-between items-center mb-2">
                   <h2 className="text-lg font-semibold">{nft.name}</h2>
-                  <span className="text-sm text-gray-400">
+                  <span className="text-sm text-gray-600">
                     {nft.symbol?.toUpperCase()}
                   </span>
                 </div>
@@ -67,7 +63,9 @@ export default function Page() {
                   <Image
                     src={nft.image.small}
                     alt={nft.name}
-                    className="w-full h-40 object-contain"
+                    width={320}
+                    height={160}
+                    className="object-contain w-full h-40"
                   />
                 ) : (
                   <div className="h-40 flex items-center justify-center text-gray-500">
@@ -75,10 +73,10 @@ export default function Page() {
                   </div>
                 )}
 
-                <div className="mt-2 text-sm text-gray-400">
+                <div className="mt-2 text-sm text-gray-700">
                   Floor: ${nft.floor_price?.usd?.toLocaleString() || "N/A"}
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-gray-700">
                   Volume (24h): ${nft.volume_24h_usd?.toLocaleString() || "N/A"}
                 </div>
               </div>

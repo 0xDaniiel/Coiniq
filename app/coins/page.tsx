@@ -78,11 +78,9 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full px-4 py-6 bg-[#0f172a] min-h-screen text-white">
-      <h1 className="text-3xl font-bold mb-4 text-blue-400">
-        Cryptocurrencies
-      </h1>
-      <p className="text-gray-400 mb-4">
+    <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
+      <h1 className="text-3xl font-bold mb-4 text-black">Cryptocurrencies</h1>
+      <p className="text-gray-600 mb-4">
         Browse and track top cryptocurrencies. Data updates every 10 seconds.
       </p>
 
@@ -92,15 +90,13 @@ export default function Page() {
           placeholder="Search coins..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-gray-800 border border-gray-700 text-gray-100 rounded px-4 py-2 w-full sm:w-64"
+          className="bg-white border border-gray-300 text-black rounded px-4 py-2 w-full sm:w-64"
         />
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-          Search
-        </button>
+
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="bg-gray-800 border border-gray-700 text-gray-100 rounded px-4 py-2"
+          className="bg-white border border-gray-300 text-black rounded px-4 py-2"
         >
           <option value="all">All Coins</option>
           <option value="top100">Top 100 by Market Cap</option>
@@ -109,44 +105,46 @@ export default function Page() {
       </div>
 
       {loading ? (
-        <div className="text-gray-400">Loading...</div>
+        <div className="text-gray-600">Loading...</div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredCoins.map((coin) => (
             <div
               key={coin.id}
               onClick={() => openCoinModal(coin.id)}
-              className="bg-gray-900 rounded-xl p-4 border border-blue-500/20 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10 duration-3000 hover:scale-[1.02] cursor-pointer transition-transform"
+              className="bg-white rounded-xl p-4 border border-gray-200 hover:border-blue-400 hover:shadow-md hover:shadow-blue-100 duration-300 hover:scale-[1.02] cursor-pointer transition-transform"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <Image
                     src={coin.image}
                     alt={coin.name}
-                    className="w-8 h-8 rounded-full"
+                    width={32}
+                    height={32}
+                    className="rounded-full"
                   />
-                  <span className="text-white font-bold text-lg">
+                  <span className="text-black font-bold text-lg">
                     {coin.name}
                   </span>
                 </div>
-                <button className="text-yellow-400 hover:text-yellow-500 text-xl">
+                <button className="text-yellow-500 hover:text-yellow-600 text-xl">
                   ★
                 </button>
               </div>
-              <div className="text-green-400 text-base font-semibold mb-1">
+              <div className="text-green-600 text-base font-semibold mb-1">
                 Price: ${coin.current_price.toLocaleString()}
               </div>
-              <div className="text-purple-300 text-sm font-medium mb-1">
+              <div className="text-purple-700 text-sm font-medium mb-1">
                 Market Cap: {formatMarketCap(coin.market_cap)}
               </div>
-              <div className="text-teal-300 text-sm font-medium mb-1">
+              <div className="text-teal-700 text-sm font-medium mb-1">
                 Rank: #{coin.market_cap_rank}
               </div>
               <div
                 className={`text-sm font-medium ${
                   coin.price_change_percentage_24h > 0
-                    ? "text-green-500"
-                    : "text-red-500"
+                    ? "text-green-600"
+                    : "text-red-600"
                 }`}
               >
                 24h Change: {coin.price_change_percentage_24h.toFixed(2)}%
@@ -157,7 +155,7 @@ export default function Page() {
       )}
 
       {modalLoading && (
-        <p className="text-gray-400 mt-4">Loading coin details...</p>
+        <p className="text-gray-600 mt-4">Loading coin details...</p>
       )}
 
       {selectedCoin && !modalLoading && (
