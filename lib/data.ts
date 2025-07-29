@@ -2,7 +2,7 @@ import { Home, Search, BarChart, Image } from "lucide-react";
 
 export const items = [
   {
-    title: "Dashboard",
+    title: "Home",
     url: "/",
     icon: Home,
   },

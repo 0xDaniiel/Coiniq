@@ -23,49 +23,69 @@ export default function Home() {
     });
   }, []);
 
-  if (!global) return <p>Loading...</p>;
+  if (!global) return <p className="p-6 text-black">Loading...</p>;
 
   const btcDom = global.market_cap_percentage.btc;
   const ethDom = global.market_cap_percentage.eth;
-  const altDom = 100 - btcDom;
+  const othersDom = 100 - btcDom - ethDom;
 
   const pieData = [
     { name: "Bitcoin", value: btcDom, color: "#f7931a" },
     { name: "Ethereum", value: ethDom, color: "#627eea" },
-    { name: "Others", value: 100 - btcDom - ethDom, color: "#3b82f6" },
+    { name: "Others", value: othersDom, color: "#3b82f6" },
   ];
 
   const formatUsd = (num: number) =>
     "$" + num.toLocaleString(undefined, { maximumFractionDigits: 0 });
 
   return (
-    <div className="p-6 bg-white text-black min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Dashboard Overview</h1>
+    <div className="bg-white text-black min-h-screen px-6 py-8 w-full">
+      <h1 className="text-3xl font-bold py-5">Coiniq Overview</h1>
 
-      {/* Summary Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 mb-10 w-full">
         <Card
           title="Market Cap"
           value={formatUsd(global.total_market_cap.usd)}
+          color="blue"
         />
-        <Card title="24h Volume" value={formatUsd(global.total_volume.usd)} />
-        <Card title="BTC Dominance" value={btcDom.toFixed(2) + "%"} />
-        <Card title="ETH Dominance" value={ethDom.toFixed(2) + "%"} />
+        <Card
+          title="24h Volume"
+          value={formatUsd(global.total_volume.usd)}
+          color="green"
+        />
+        <Card
+          title="BTC Dominance"
+          value={btcDom.toFixed(2) + "%"}
+          color="red"
+        />
+        <Card
+          title="ETH Dominance"
+          value={ethDom.toFixed(2) + "%"}
+          color="green"
+        />
         <Card
           title="Total Coins"
-          value={global.active_cryptocurrencies.toLocaleString()}
+          value={global.active_cryptocurrencies}
+          color="blue"
         />
-        <Card title="Total Markets" value={global.markets.toLocaleString()} />
-        <Card title="Total Exchanges" value={global.markets.toLocaleString()} />
-        <Card title="Top Gainer" value={topCoins[0]?.name ?? "-"} />
+        <Card title="Markets" value={global.markets} color="red" />
+        <Card
+          title="Top Gainer"
+          value={topCoins[0]?.name ?? "—"}
+          color="blue"
+        />
+        <Card title="NFTs Active" value="1,400+" color="green" />
+        <Card title="APIs Available" value="200+" color="red" />
+        <Card title="Exchanges" value={global.markets} color="green" />
       </div>
 
-      {/* Visuals */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+      {/* Pie Chart and Movers */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
         {/* Pie Chart */}
-        <div className="bg-white rounded-2xl p-6 border shadow">
-          <h2 className="text-xl font-semibold mb-4">Market Share</h2>
-          <ResponsiveContainer width="100%" height={250}>
+        <div className="bg-white rounded-2xl p-4 border shadow w-full h-[300px]">
+          <h2 className="text-lg font-semibold mb-4">Market Share</h2>
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={pieData}
@@ -73,8 +93,8 @@ export default function Home() {
                 nameKey="name"
                 cx="50%"
                 cy="50%"
-                outerRadius={80}
-                innerRadius={40}
+                outerRadius={90}
+                innerRadius={45}
                 label={({ name, percent }) =>
                   percent !== undefined
                     ? `${name}: ${(percent * 100).toFixed(1)}%`
@@ -91,17 +111,27 @@ export default function Home() {
         </div>
 
         {/* Top Movers */}
-        <div className="bg-white rounded-2xl p-6 border shadow">
-          <h2 className="text-xl font-semibold mb-4">Top Movers (24h)</h2>
-          <ul className="text-sm space-y-2">
+        <div className="bg-white rounded-2xl p-4 border shadow w-full">
+          <h2 className="text-lg font-semibold mb-4">Top Movers (24h)</h2>
+          <ul className="space-y-3">
             {topCoins.map((c) => (
-              <li key={c.id} className="flex justify-between">
-                <span>{c.name}</span>
+              <li
+                key={c.id}
+                className="flex items-center justify-between gap-4"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={c.image}
+                    alt={c.name}
+                    className="w-6 h-6 rounded-full"
+                  />
+                  <span className="font-medium">{c.name}</span>
+                </div>
                 <span
-                  className={`$ {
+                  className={`text-sm font-semibold ${
                     c.price_change_percentage_24h >= 0
-                      ? "text-green-600"
-                      : "text-red-600"
+                      ? "text-green-600 "
+                      : "text-red-600 "
                   }`}
                 >
                   {c.price_change_percentage_24h?.toFixed(2)}%
@@ -115,10 +145,23 @@ export default function Home() {
   );
 }
 
-// Card Component
-const Card = ({ title, value }: { title: string; value: string | number }) => (
-  <div className="bg-white p-4 border rounded-lg shadow hover:shadow-md transition text-center h-full flex flex-col justify-center">
-    <h3 className="text-sm text-gray-500 mb-1">{title}</h3>
-    <p className="text-lg font-bold text-black">{value}</p>
+type CardProps = {
+  title: string;
+  value: string | number;
+  color: "blue" | "green" | "red";
+};
+
+const colorClasses: Record<CardProps["color"], string> = {
+  blue: "bg-blue-100 text-blue-900",
+  green: "bg-green-100 text-green-900",
+  red: "bg-red-100 text-red-900",
+};
+
+const Card = ({ title, value, color }: CardProps) => (
+  <div
+    className={`p-5 rounded-2xl shadow flex flex-col justify-center h-32 ${colorClasses[color]}`}
+  >
+    <h3 className="text-sm mb-1 opacity-80">{title}</h3>
+    <p className="text-xl font-bold">{value}</p>
   </div>
 );
