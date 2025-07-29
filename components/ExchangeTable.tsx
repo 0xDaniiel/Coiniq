@@ -3,8 +3,8 @@ import type { Exchange } from "@/types/exchange";
 
 const ExchangeTable = ({ exchanges }: { exchanges: Exchange[] }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm text-left text-gray-600 border">
+    <div className="w-full overflow-x-auto">
+      <table className="min-w-[800px] w-full text-sm text-left text-gray-600 border">
         <thead className="bg-gray-100 text-xs uppercase text-gray-700">
           <tr>
             <th className="px-4 py-3">#</th>
@@ -34,7 +34,7 @@ const ExchangeTable = ({ exchanges }: { exchanges: Exchange[] }) => {
                 />
                 <span className="font-semibold">{ex.name}</span>
               </td>
-              <td className="px-4 py-3 text-green-600 font-semibold">
+              <td className="px-4 py-3">
                 {ex.trade_volume_24h_btc.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
                 })}{" "}

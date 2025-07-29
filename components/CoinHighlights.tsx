@@ -22,8 +22,8 @@ export default function CoinHighlights({ coins }: { coins: Coin[] }) {
     if (!coin) return null;
     return (
       <div className="rounded-2xl shadow-md p-4 w-full sm:w-1/3 border border-gray-200 cursor-pointer">
-        <h2 className="text-lg font-semibold mb-2 ">{title}</h2>
-        <p className="text-xl font-bold text-gray-700">
+        <h2 className="text-lg font-semiold mb-2 ">{title}</h2>
+        <p className="text-xl font-bol text-gray-700">
           {coin.name} ({coin.symbol.toUpperCase()})
         </p>
         <Sparklines data={coin.sparkline_in_7d?.price || []} height={40}>

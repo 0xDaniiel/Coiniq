@@ -5,6 +5,13 @@ import type { CoinDetail } from "@/types/coin";
 
 const BASE_URL = "https://api.coingecko.com/api/v3";
 
+export const fetchGlobal = async () => {
+  const res = await fetch("https://api.coingecko.com/api/v3/global");
+  if (!res.ok) throw new Error("Failed to fetch global market data");
+  const data = await res.json();
+  return data.data;
+};
+
 export async function fetchTopCoins(): Promise<Coin[]> {
   const res = await fetch(
     `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`

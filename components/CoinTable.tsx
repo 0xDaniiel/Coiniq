@@ -81,8 +81,10 @@ export default function CoinTable({
                   {coin.price_change_percentage_24h.toFixed(2)}%
                 </span>
               </td>
-              <td className="px-4 py-3">{formatMarketCap(coin.market_cap)}</td>
-              <td className="px-4 py-3">
+              <td className="px-4 py-3 bg-blue-100 text-blue-700">
+                {formatMarketCap(coin.market_cap)}
+              </td>
+              <td className="px-4 py-3 bg-green-100 text-green-700">
                 ${coin.total_volume.toLocaleString()}
               </td>
               <td className="px-4 py-3">

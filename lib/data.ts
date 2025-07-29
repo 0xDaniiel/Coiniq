@@ -1,4 +1,4 @@
-import { Home, Search, BarChart, Star, Image } from "lucide-react";
+import { Home, Search, BarChart, Image } from "lucide-react";
 
 export const items = [
   {

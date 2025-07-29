@@ -1,4 +1,3 @@
-// components/ExchangeHighlights.tsx
 import type { Exchange } from "@/types/exchange";
 import Image from "next/image";
 
@@ -39,22 +38,20 @@ export default function ExchangeHighlights({
     image?: string;
     subtitle?: string;
   }) => (
-    <div className="rounded-2xl shadow p-4 border border-gray-200 w-full sm:w-1/3 bg-white hover:shadow-lg transition">
-      <h2 className="text-gray-500 text-sm mb-1">{title}</h2>
-      <div className="flex items-center gap-4">
-        {image && (
-          <Image
-            src={image}
-            alt={value}
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
-        )}
-        <div>
-          <div className="text-lg font-bold">{value}</div>
-          {subtitle && <div className="text-sm text-gray-500">{subtitle}</div>}
-        </div>
+    <div className="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-md cursor-pointer border border-gray-100 w-full sm:w-1/3 hover:shadow-lg transition">
+      {image && (
+        <Image
+          src={image}
+          alt={value}
+          width={48}
+          height={48}
+          className="rounded-full"
+        />
+      )}
+      <div>
+        <h2 className="text-sm text-gray-500 font-medium">{title}</h2>
+        <p className="text-lg font-semibold text-gray-800">{value}</p>
+        {subtitle && <p className="text-sm text-gray-400">{subtitle}</p>}
       </div>
     </div>
   );
