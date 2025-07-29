@@ -27,12 +27,14 @@ export default function Page() {
         : a.trade_volume_24h_btc - b.trade_volume_24h_btc
     );
 
-  const formatVol = (vol: number) => `$${(vol / 1_000).toFixed(1)}k BTC`;
+  const formatVol = (vol: number) => `${(vol / 1_000).toFixed(1)}k BTC`;
 
   return (
-    <div className="w-full min-h-screen bg-white text-black px-6 py-6">
-      <h1 className="text-3xl font-bold mb-2">Exchanges</h1>
-      <p className="text-gray-700 mb-6">Explore top crypto exchanges</p>
+    <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
+      <h1 className="text-3xl font-bold mb-4">Exchanges</h1>
+      <p className="text-gray-600 mb-4">
+        Explore top crypto exchanges. Data sorted by 24h volume.
+      </p>
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
         <input
@@ -40,7 +42,7 @@ export default function Page() {
           placeholder="Search exchanges..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-white border border-black text-black rounded px-4 py-2 w-full sm:w-64 shadow-sm"
+          className="bg-white border border-gray-300 text-black rounded px-4 py-2 w-full sm:w-64"
         />
         <button
           onClick={() => setSortAsc(!sortAsc)}
@@ -51,57 +53,42 @@ export default function Page() {
         <select
           value={topFilter}
           onChange={(e) => setTopFilter(e.target.value as "all" | "top10")}
-          className="bg-white border border-black text-black rounded px-4 py-2 shadow-sm "
+          className="bg-white border border-gray-300 text-black rounded px-4 py-2"
         >
-          <option value="all" className="hover:bg-black">
-            All Exchanges
-          </option>
-          <option value="top10" className="hover:bg-black">
-            Top 10 by Trust Score
-          </option>
+          <option value="all">All Exchanges</option>
+          <option value="top10">Top 10 by Trust Score</option>
         </select>
       </div>
 
       {loading ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="bg-neutral-200 rounded-xl p-4 animate-pulse"
-            >
-              <div className="h-4 bg-neutral-300 rounded w-24 mb-2"></div>
-              <div className="h-3 bg-neutral-300 rounded w-20 mb-1"></div>
-              <div className="h-3 bg-neutral-300 rounded w-16 mb-1"></div>
-            </div>
-          ))}
-        </div>
+        <p className="text-gray-600">Loading...</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="w-full divide-y divide-gray-200">
           {filtered.map((ex) => (
             <div
               key={ex.id}
-              className="bg-white border border-black rounded-xl p-6 hover:shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
+              className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={ex.image}
-                    alt={ex.name}
-                    width={32}
-                    height={32}
-                    className="rounded-full"
-                  />
-                  <span className="font-bold text-lg">{ex.name}</span>
+              <div className="flex items-center gap-4">
+                <Image
+                  src={ex.image}
+                  alt={ex.name}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <div>
+                  <div className="font-bold text-black text-lg">{ex.name}</div>
+                  <div className="text-sm text-gray-500">
+                    Trust Rank: #{ex.trust_score_rank}
+                  </div>
                 </div>
-                <button className="text-yellow-500 hover:text-yellow-600 text-xl">
-                  ★
-                </button>
               </div>
-              <div className="text-sm font-medium mb-1">
-                Volume: {formatVol(ex.trade_volume_24h_btc)}
-              </div>
-              <div className="text-sm text-green-600 font-medium mb-1">
-                Trust Rank: #{ex.trust_score_rank}
+
+              <div className="text-right">
+                <div className="text-green-600 font-semibold">
+                  {formatVol(ex.trade_volume_24h_btc)}
+                </div>
               </div>
             </div>
           ))}

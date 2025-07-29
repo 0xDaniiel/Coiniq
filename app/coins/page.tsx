@@ -107,47 +107,45 @@ export default function Page() {
       {loading ? (
         <div className="text-gray-600">Loading...</div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="w-full divide-y divide-gray-200">
           {filteredCoins.map((coin) => (
             <div
               key={coin.id}
               onClick={() => openCoinModal(coin.id)}
-              className="bg-white rounded-xl p-4 border border-gray-200 hover:border-blue-400 hover:shadow-md hover:shadow-blue-100 duration-300 hover:scale-[1.02] cursor-pointer transition-transform"
+              className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={coin.image}
-                    alt={coin.name}
-                    width={32}
-                    height={32}
-                    className="rounded-full"
-                  />
-                  <span className="text-black font-bold text-lg">
+              <div className="flex items-center gap-4">
+                <Image
+                  src={coin.image}
+                  alt={coin.name}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <div>
+                  <div className="font-bold text-black text-lg">
                     {coin.name}
-                  </span>
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    Market Cap: {formatMarketCap(coin.market_cap)} | Rank: #
+                    {coin.market_cap_rank}
+                  </div>
                 </div>
-                <button className="text-yellow-500 hover:text-yellow-600 text-xl">
-                  ★
-                </button>
               </div>
-              <div className="text-green-600 text-base font-semibold mb-1">
-                Price: ${coin.current_price.toLocaleString()}
-              </div>
-              <div className="text-purple-700 text-sm font-medium mb-1">
-                Market Cap: {formatMarketCap(coin.market_cap)}
-              </div>
-              <div className="text-teal-700 text-sm font-medium mb-1">
-                Rank: #{coin.market_cap_rank}
-              </div>
-              <div
-                className={`text-sm font-medium ${
-                  coin.price_change_percentage_24h > 0
-                    ? "text-green-600"
-                    : "text-red-600"
-                }`}
-              >
-                24h Change: {coin.price_change_percentage_24h.toFixed(2)}%
+
+              <div className="text-right">
+                <div className="text-green-600 font-semibold">
+                  ${coin.current_price.toLocaleString()}
+                </div>
+                <div
+                  className={`text-sm ${
+                    coin.price_change_percentage_24h > 0
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  24h: {coin.price_change_percentage_24h.toFixed(2)}%
+                </div>
               </div>
             </div>
           ))}
