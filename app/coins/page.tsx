@@ -1,65 +1,25 @@
 "use client";
-import { useEffect, useState } from "react";
-import { fetchTopCoins } from "@/lib/coingecko";
-import type { Coin, CoinDetail } from "@/types/coin";
+import { useState } from "react";
+import { useCoins } from "@/hooks/usecoins";
+import { applyFilter } from "@/lib/filterCoins";
+import type { CoinDetail } from "@/types/coin";
+import CoinTable from "@/components/CoinTable";
 import CoinModal from "@/components/CoinModal";
-import Image from "next/image";
+import { formatMarketCap, formatNumberShort } from "@/lib/dataCal";
 
 export default function Page() {
-  const [coins, setCoins] = useState<Coin[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { coins, loading } = useCoins();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [selectedCoin, setSelectedCoin] = useState<CoinDetail | null>(null);
   const [modalLoading, setModalLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchTopCoins();
-        setCoins(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-    const interval = setInterval(fetchData, 10000); // Refresh every 10s
-    return () => clearInterval(interval);
-  }, []);
-
-  const applyFilter = (coins: Coin[]) => {
-    switch (filter) {
-      case "top100":
-        return coins.filter(
-          (coin) => coin.market_cap_rank && coin.market_cap_rank <= 100
-        );
-      case "gainers":
-        return coins
-          .filter((coin) => coin.price_change_percentage_24h !== undefined)
-          .sort(
-            (a, b) =>
-              b.price_change_percentage_24h - a.price_change_percentage_24h
-          )
-          .slice(0, 100);
-      default:
-        return coins;
-    }
-  };
-
   const filteredCoins = applyFilter(
     coins.filter((coin) =>
       coin.name.toLowerCase().includes(search.toLowerCase())
-    )
+    ),
+    filter
   );
-
-  const formatMarketCap = (cap: number): string => {
-    if (cap >= 1_000_000_000) return `$${(cap / 1_000_000_000).toFixed(1)}B`;
-    if (cap >= 1_000_000) return `$${(cap / 1_000_000).toFixed(1)}M`;
-    return `$${cap.toLocaleString()}`;
-  };
 
   const openCoinModal = async (coinId: string) => {
     try {
@@ -78,13 +38,13 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
-      <h1 className="text-3xl font-bold mb-4 text-black">Cryptocurrencies</h1>
+    <div className="w-full min-h-screen bg-white text-black px-4 py-6">
+      <h1 className="text-3xl font-bold mb-4">Cryptocurrencies</h1>
       <p className="text-gray-600 mb-4">
         Browse and track top cryptocurrencies. Data updates every 10 seconds.
       </p>
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 w-full">
         <input
           type="text"
           placeholder="Search coins..."
@@ -92,7 +52,6 @@ export default function Page() {
           onChange={(e) => setSearch(e.target.value)}
           className="bg-white border border-gray-300 text-black rounded px-4 py-2 w-full sm:w-64"
         />
-
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
@@ -107,49 +66,12 @@ export default function Page() {
       {loading ? (
         <div className="text-gray-600">Loading...</div>
       ) : (
-        <div className="w-full divide-y divide-gray-200">
-          {filteredCoins.map((coin) => (
-            <div
-              key={coin.id}
-              onClick={() => openCoinModal(coin.id)}
-              className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-            >
-              <div className="flex items-center gap-4">
-                <Image
-                  src={coin.image}
-                  alt={coin.name}
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-                <div>
-                  <div className="font-bold text-black text-lg">
-                    {coin.name}
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    Market Cap: {formatMarketCap(coin.market_cap)} | Rank: #
-                    {coin.market_cap_rank}
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-right">
-                <div className="text-green-600 font-semibold">
-                  ${coin.current_price.toLocaleString()}
-                </div>
-                <div
-                  className={`text-sm ${
-                    coin.price_change_percentage_24h > 0
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  24h: {coin.price_change_percentage_24h.toFixed(2)}%
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CoinTable
+          coins={filteredCoins}
+          onCoinClick={openCoinModal}
+          formatMarketCap={formatMarketCap}
+          formatNumberShort={formatNumberShort}
+        />
       )}
 
       {modalLoading && (

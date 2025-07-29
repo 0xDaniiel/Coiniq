@@ -21,9 +21,9 @@ export const items = [
     url: "/nfts",
     icon: Image,
   },
-  {
-    title: "Favorites",
-    url: "/favorites",
-    icon: Star,
-  },
+  // {
+  //   title: "Favorites",
+  //   url: "/favorites",
+  //   icon: Star,
+  // },
 ];

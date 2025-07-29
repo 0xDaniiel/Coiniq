@@ -6,7 +6,14 @@ export type Coin = {
   current_price: number;
   market_cap: number;
   market_cap_rank: number;
+  total_volume: number;
+  circulating_supply: number;
+  price_change_percentage_1h_in_currency?: number;
   price_change_percentage_24h: number;
+  price_change_percentage_7d_in_currency?: number;
+  sparkline_in_7d?: {
+    price: number[];
+  };
 };
 
 export type CoinDetail = {
