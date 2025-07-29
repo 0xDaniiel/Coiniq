@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { fetchExchanges } from "@/lib/coingecko";
 import type { Exchange } from "@/types/exchange";
-import Image from "next/image";
+import ExchangeHighlights from "@/components/ExchangeHighlights";
+import ExchangeTable from "@/components/ExchangeTable";
 
 export default function Page() {
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
@@ -27,14 +28,14 @@ export default function Page() {
         : a.trade_volume_24h_btc - b.trade_volume_24h_btc
     );
 
-  const formatVol = (vol: number) => `${(vol / 1_000).toFixed(1)}k BTC`;
-
   return (
     <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
       <h1 className="text-3xl font-bold mb-4">Exchanges</h1>
       <p className="text-gray-600 mb-4">
         Explore top crypto exchanges. Data sorted by 24h volume.
       </p>
+
+      {!loading && <ExchangeHighlights exchanges={exchanges} />}
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
         <input
@@ -63,36 +64,7 @@ export default function Page() {
       {loading ? (
         <p className="text-gray-600">Loading...</p>
       ) : (
-        <div className="w-full divide-y divide-gray-200">
-          {filtered.map((ex) => (
-            <div
-              key={ex.id}
-              className="flex items-center justify-between px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-            >
-              <div className="flex items-center gap-4">
-                <Image
-                  src={ex.image}
-                  alt={ex.name}
-                  width={32}
-                  height={32}
-                  className="rounded-full"
-                />
-                <div>
-                  <div className="font-bold text-black text-lg">{ex.name}</div>
-                  <div className="text-sm text-gray-500">
-                    Trust Rank: #{ex.trust_score_rank}
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-right">
-                <div className="text-green-600 font-semibold">
-                  {formatVol(ex.trade_volume_24h_btc)}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ExchangeTable exchanges={filtered} />
       )}
     </div>
   );

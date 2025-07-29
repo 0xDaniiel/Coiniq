@@ -22,7 +22,30 @@ export async function fetchCoinDetails(id: string): Promise<CoinDetail> {
 export const fetchExchanges = async (): Promise<Exchange[]> => {
   const res = await fetch(`${BASE_URL}/exchanges?per_page=50&page=1`);
   if (!res.ok) throw new Error("Failed to fetch exchanges");
-  return res.json();
+  const exchanges = await res.json();
+
+  const detailedExchanges = await Promise.all(
+    exchanges.map(async (ex: Exchange) => {
+      try {
+        const res = await fetch(`${BASE_URL}/exchanges/${ex.id}`);
+        const details = await res.json();
+        const coinsSet = new Set(details.tickers?.map((t: any) => t.base));
+
+        return {
+          ...ex,
+          centralized: details.centralized,
+          year_established: details.year_established,
+          tickers: details.tickers,
+          coins_count: coinsSet.size,
+          has_api: !!details.links?.api?.length,
+        };
+      } catch {
+        return ex;
+      }
+    })
+  );
+
+  return detailedExchanges;
 };
 
 export async function fetchTopNFTs() {
