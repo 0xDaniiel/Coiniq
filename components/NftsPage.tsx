@@ -2,12 +2,11 @@
 import { useState, useEffect } from "react";
 import type { NFT } from "@/types/nft";
 import { fetchTopNFTs } from "@/lib/coingecko";
-import NFTModal from "@/components/NFTModal";
-import Image from "next/image";
+import NftHighlights from "@/components/NftHightlights";
+import NftTable from "@/components/NftTable";
 
 export default function NftsPage() {
   const [nfts, setNFTs] = useState<NFT[]>([]);
-  const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -31,7 +30,7 @@ export default function NftsPage() {
 
   return (
     <div className="w-full px-4 py-6 bg-white text-black min-h-screen">
-      <h1 className="text-3xl font-bold mb-4">NFT Market</h1>
+      <h1 className="text-3xl font-bold mb-6 py-1">NFT Market</h1>
 
       <input
         type="text"
@@ -41,52 +40,17 @@ export default function NftsPage() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
+      {!loading && <NftHighlights nfts={filtered} />}
+
       {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {filtered.map((nft) => (
-            <div
-              key={nft.id}
-              onClick={() => setSelectedNFT(nft)}
-              className="bg-white rounded-lg overflow-hidden cursor-pointer border border-gray-300 hover:shadow-md transition"
-            >
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-2">
-                  <h2 className="text-lg font-semibold">{nft.name}</h2>
-                  <span className="text-sm text-gray-600">
-                    {nft.symbol?.toUpperCase()}
-                  </span>
-                </div>
-
-                {nft.image?.small ? (
-                  <Image
-                    src={nft.image.small}
-                    alt={nft.name}
-                    width={320}
-                    height={160}
-                    className="object-contain w-full h-40"
-                  />
-                ) : (
-                  <div className="h-40 flex items-center justify-center text-gray-500">
-                    No Image
-                  </div>
-                )}
-
-                <div className="mt-2 text-sm text-gray-700">
-                  Floor: ${nft.floor_price?.usd?.toLocaleString() || "N/A"}
-                </div>
-                <div className="text-sm text-gray-700">
-                  Volume (24h): ${nft.volume_24h_usd?.toLocaleString() || "N/A"}
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="space-y-2 animate-pulse">
+          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
         </div>
-      )}
-
-      {selectedNFT && (
-        <NFTModal nft={selectedNFT} onClose={() => setSelectedNFT(null)} />
+      ) : (
+        <NftTable nfts={filtered} />
       )}
     </div>
   );

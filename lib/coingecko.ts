@@ -56,23 +56,60 @@ export const fetchExchanges = async (): Promise<Exchange[]> => {
   return detailedExchanges;
 };
 
-export async function fetchTopNFTs() {
+// export async function fetchTopNFTs() {
+//   const res = await fetch(`${BASE_URL}/nfts/list`);
+//   if (!res.ok) throw new Error("Failed to fetch NFT list");
+
+//   const nftList = await res.json();
+
+//   // Try fetching details for the first 20 NFT IDs
+//   const top = nftList.slice(0, 20);
+
+//   const results = await Promise.all(
+//     top.map(async (nft: { id: string }) => {
+//       try {
+//         const detailRes = await fetch(`${BASE_URL}/nfts/${nft.id}`);
+//         if (!detailRes.ok) return null;
+//         const data = await detailRes.json();
+
+//         // Only keep NFTs with image and market data
+//         if (data.image?.small && data.floor_price?.usd !== null) return data;
+//         return null;
+//       } catch {
+//         return null;
+//       }
+//     })
+//   );
+
+//   return results.filter(Boolean); // remove nulls
+// }
+
+// export async function fetchTopNFTs() {
+//   const res = await fetch("https://api.coingecko.com/api/v3/nfts/markets");
+//   if (!res.ok) throw new Error("Failed to fetch top NFTs");
+
+//   const data = await res.json();
+
+//   // Optional: Limit to top 20
+//   return data.slice(0, 20);
+// }
+
+export async function fetchTopNFTs(limit = 20) {
+  // const BASE_URL = "https://api.coingecko.com/api/v3";
+
   const res = await fetch(`${BASE_URL}/nfts/list`);
   if (!res.ok) throw new Error("Failed to fetch NFT list");
 
   const nftList = await res.json();
-
-  // Try fetching details for the first 20 NFT IDs
-  const top = nftList.slice(0, 20);
+  const top = nftList.slice(0, limit);
 
   const results = await Promise.all(
-    top.map(async (nft: { id: string }) => {
+    top.map(async (nft) => {
       try {
         const detailRes = await fetch(`${BASE_URL}/nfts/${nft.id}`);
         if (!detailRes.ok) return null;
         const data = await detailRes.json();
 
-        // Only keep NFTs with image and market data
         if (data.image?.small && data.floor_price?.usd !== null) return data;
         return null;
       } catch {
@@ -81,5 +118,5 @@ export async function fetchTopNFTs() {
     })
   );
 
-  return results.filter(Boolean); // remove nulls
+  return results.filter(Boolean);
 }

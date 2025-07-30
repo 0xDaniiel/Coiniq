@@ -49,8 +49,8 @@ export function AppSidebar() {
                     className="text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition"
                   >
                     <Link href={item.url}>
-                      <item.icon className="w-4 h-4" />
-                      <span>{item.title}</span>
+                      <item.icon className="w-5 h-5" />
+                      <span className="text-lg">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
