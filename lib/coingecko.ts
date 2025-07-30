@@ -1,7 +1,7 @@
-// /lib/coingecko.ts
 import type { Coin } from "@/types/coin";
 import type { Exchange } from "@/types/exchange";
 import type { CoinDetail } from "@/types/coin";
+import type { Ticker } from "@/types/exchange";
 
 const BASE_URL = "https://api.coingecko.com/api/v3";
 
@@ -36,13 +36,14 @@ export const fetchExchanges = async (): Promise<Exchange[]> => {
       try {
         const res = await fetch(`${BASE_URL}/exchanges/${ex.id}`);
         const details = await res.json();
-        const coinsSet = new Set(details.tickers?.map((t: any) => t.base));
+        const tickers = details.tickers as Ticker[];
+        const coinsSet = new Set(tickers.map((t) => t.base));
 
         return {
           ...ex,
           centralized: details.centralized,
           year_established: details.year_established,
-          tickers: details.tickers,
+          tickers,
           coins_count: coinsSet.size,
           has_api: !!details.links?.api?.length,
         };

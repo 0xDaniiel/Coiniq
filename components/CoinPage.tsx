@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useCoins } from "@/hooks/usecoins";
-import type { Coin, CoinDetail } from "@/types/coin";
+import type { CoinDetail } from "@/types/coin";
 import CoinTable from "@/components/CoinTable";
 import CoinModal from "@/components/CoinModal";
 import { formatMarketCap, formatNumberShort } from "@/lib/dataCal";
@@ -11,8 +11,8 @@ import CoinHighlights from "@/components/CoinHighlights";
 export default function CoinPage() {
   const { coins, loading } = useCoins();
   const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState<"24h" | "volume" | null>(null);
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  // const [sortBy, setSortBy] = useState<"24h" | "volume" | null>(null);
+  // const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [selectedCoin, setSelectedCoin] = useState<CoinDetail | null>(null);
   const [modalLoading, setModalLoading] = useState(false);
   const [filter, setFilter] = useState("all");
@@ -24,8 +24,8 @@ export default function CoinPage() {
       ),
       filter
     ),
-    sortBy,
-    sortOrder
+    null,
+    "desc"
   );
 
   const openCoinModal = async (coinId: string) => {
@@ -46,7 +46,7 @@ export default function CoinPage() {
 
   return (
     <div className="w-full min-h-screen bg-white text-black px-4 py-6">
-      <h1 className="text-3xl font-bold py-5">Cryptocurrencies</h1>
+      <h1 className="text-3xl font-bold  py-1 mb-6">Cryptocurrencies</h1>
 
       <div className="mb-6">
         <CoinHighlights coins={coins} />

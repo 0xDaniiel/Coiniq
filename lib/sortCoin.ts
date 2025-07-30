@@ -8,9 +8,9 @@ export function sortCoins(
   if (!sortBy) return coins;
 
   const sorted = [...coins].sort((a, b) => {
-    let aVal =
+    const aVal =
       sortBy === "24h" ? a.price_change_percentage_24h : a.total_volume;
-    let bVal =
+    const bVal =
       sortBy === "24h" ? b.price_change_percentage_24h : b.total_volume;
 
     return order === "asc" ? aVal - bVal : bVal - aVal;

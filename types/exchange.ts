@@ -13,3 +13,9 @@ export interface Exchange {
   has_api?: boolean;
   // optional future: volume_change_1h?: number
 }
+
+export type Ticker = {
+  base: string;
+  target: string;
+  market: { name: string };
+};

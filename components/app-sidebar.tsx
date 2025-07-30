@@ -37,7 +37,9 @@ export function AppSidebar() {
     <Sidebar className="bg-white dark:bg-sidebar border-r border-black/10 dark:border-white/10 flex flex-col justify-between">
       <SidebarContent className="bg-white dark:bg-sidebar flex-1">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-black dark:text-white font-semibold">Coniq</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-black dark:text-white font-semibold">
+            Coniq
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -65,7 +67,11 @@ export function AppSidebar() {
           onClick={toggleTheme}
           className="p-2 rounded-md hover:bg-black/5 dark:hover:bg-white/10 transition"
         >
-          {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          {theme === "dark" ? (
+            <Sun className="w-4 h-4" />
+          ) : (
+            <Moon className="w-4 h-4" />
+          )}
         </button>
       </div>
     </Sidebar>

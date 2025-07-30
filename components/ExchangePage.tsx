@@ -30,7 +30,7 @@ export default function ExchangePage() {
 
   return (
     <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
-      <h1 className="text-3xl font-bold py-5">Exchanges</h1>
+      <h1 className="text-3xl font-bold  py-1 mb-6">Exchanges</h1>
       <p className="text-gray-600 mb-4">
         Explore top crypto exchanges. Data sorted by 24h volume.
       </p>
@@ -67,7 +67,12 @@ export default function ExchangePage() {
       </div>
 
       {loading ? (
-        <p className="text-gray-600">Loading...</p>
+        <div className="space-y-2 animate-pulse">
+          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        </div>
       ) : (
         <ExchangeTable exchanges={filtered} />
       )}
