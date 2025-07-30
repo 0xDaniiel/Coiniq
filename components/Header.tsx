@@ -38,10 +38,10 @@ const Header = () => {
         {/* Searchbar */}
         <div className="hidden md:block">
           <Link
-            href="/"
-            className=" inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+            href="https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/"
+            className="mt-8  inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
           >
-            Get started
+            Get Started
           </Link>
         </div>
 
@@ -70,10 +70,10 @@ const Header = () => {
             </Link>
           ))}
           <Link
-            href="/"
+            href="https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/"
             className="mt-8  inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
           >
-            Get started
+            Get Started
           </Link>
         </div>
       )}

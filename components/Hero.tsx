@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { BoxesCore } from "./ui/background-boxes";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -22,12 +23,12 @@ const Hero = () => {
         all in one simple dashboard.
       </p>
 
-      {/* <Link
-        href="/"
+      <Link
+        href="https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/"
         className="mt-8 relative z-20 inline-block px-6 py-2 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
       >
-        Start Tracking Now
-      </Link> */}
+        Get Started
+      </Link>
     </div>
   );
 };

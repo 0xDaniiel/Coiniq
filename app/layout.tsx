@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   description:
     "Track live prices, charts, and trends for the top cryptocurrencies. Built with Next.js & CoinGecko API.",
   icons: {
-    icon: "/images/icon.png", // to be updated
-    shortcut: "/images/icon.png", // to be updated
-    apple: "/apple-touch-icon.png", // to be updated
+    icon: "/images/icon.png",
+    shortcut: "/images/icon.png",
+    apple: "/images/icon.png",
   },
   keywords: [
     "crypto",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Coniq",
     images: [
       {
-        url: "/og-image.png", // to be replaced
+        url: "/images/icon.png",
         width: 1200,
         height: 630,
         alt: "Coniq Crypto Tracker",
