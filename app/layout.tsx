@@ -16,12 +16,14 @@ export const metadata: Metadata = {
   keywords: ["crypto", "dashboard", "nft", "market", "prices", "exchanges"],
   authors: [{ name: "Daniel" }],
   creator: "Daniel",
-  metadataBase: new URL("https://coniq.app"), // replace with your real domain later
+  metadataBase: new URL(
+    "https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/"
+  ),
   openGraph: {
     title: "Coniq — Real-time Crypto & NFT Dashboard",
     description:
       "Your all-in-one dashboard for live crypto prices, NFTs, exchanges and watchlists.",
-    url: "https://coniq.app", // replace with your real domain later
+    url: "https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/",
     siteName: "Coniq",
     locale: "en_US",
     type: "website",
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     creator: "@0xDaniiel",
   },
   icons: {
-    icon: "/images/icon.png", // replace later
+    icon: "/images/icon.png",
   },
 };
 
