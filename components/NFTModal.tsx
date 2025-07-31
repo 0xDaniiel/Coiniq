@@ -1,7 +1,7 @@
 "use client";
 import { X } from "lucide-react";
-import type { NFT } from "@/types/nft";
 import Image from "next/image";
+import type { NFT } from "@/types/nft";
 
 interface NFTModalProps {
   nft: NFT;
@@ -9,6 +9,11 @@ interface NFTModalProps {
 }
 
 export default function NFTModal({ nft, onClose }: NFTModalProps) {
+  const description =
+    typeof nft.description === "string"
+      ? nft.description
+      : nft.description?.en || "";
+
   return (
     <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
       <div className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full text-neutral-900 font-sans overflow-hidden">
@@ -44,6 +49,11 @@ export default function NFTModal({ nft, onClose }: NFTModalProps) {
             <p className="text-xs text-neutral-500 uppercase tracking-wide mt-1">
               {nft.symbol}
             </p>
+            {nft.is_verified && (
+              <p className="text-green-600 font-medium mt-1 text-sm">
+                ✅ Verified
+              </p>
+            )}
           </div>
 
           {/* Tags */}
@@ -70,14 +80,26 @@ export default function NFTModal({ nft, onClose }: NFTModalProps) {
                 ${nft.volume_24h_usd?.toLocaleString() || "N/A"}
               </span>
             </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-600">Owners</span>
+              <span className="font-semibold">
+                {nft.number_of_owners?.toLocaleString() || "N/A"}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-600">Total Supply</span>
+              <span className="font-semibold">
+                {nft.total_supply?.toLocaleString() || "N/A"}
+              </span>
+            </div>
           </div>
 
           {/* Description */}
-          {nft.description && (
+          {description && (
             <div className="mt-2 text-sm text-neutral-700 leading-relaxed whitespace-pre-line">
-              {nft.description.length > 300
-                ? nft.description.slice(0, 300) + "..."
-                : nft.description}
+              {description.length > 300
+                ? description.slice(0, 300) + "..."
+                : description}
             </div>
           )}
         </div>

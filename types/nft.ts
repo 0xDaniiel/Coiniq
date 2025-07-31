@@ -15,4 +15,8 @@ export type NFT = {
   number_of_owners?: number;
   external_url?: string;
   is_verified?: boolean;
+  asset_platform_id: string | null;
+  description?: {
+    en?: string;
+  };
 };

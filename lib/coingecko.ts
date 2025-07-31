@@ -94,17 +94,19 @@ export const fetchExchanges = async (): Promise<Exchange[]> => {
 //   return data.slice(0, 20);
 // }
 
-export async function fetchTopNFTs(limit = 20) {
-  // const BASE_URL = "https://api.coingecko.com/api/v3";
+type NftSummary = {
+  id: string;
+};
 
+export async function fetchTopNFTs(limit = 20) {
   const res = await fetch(`${BASE_URL}/nfts/list`);
   if (!res.ok) throw new Error("Failed to fetch NFT list");
 
-  const nftList = await res.json();
+  const nftList: NftSummary[] = await res.json();
   const top = nftList.slice(0, limit);
 
   const results = await Promise.all(
-    top.map(async (nft) => {
+    top.map(async (nft: NftSummary) => {
       try {
         const detailRes = await fetch(`${BASE_URL}/nfts/${nft.id}`);
         if (!detailRes.ok) return null;
