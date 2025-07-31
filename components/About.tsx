@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="max-w-4xl mx-auto px-4 py-12 md:py-20 text-gray-100 flex flex-col md:flex-row"
+      className="max-w-4xl mx-auto px-4 py-12 md:py-20 text-gray-100 flex flex-col md:flex-row items-center gap-10"
     >
       <section>
         <h1 className="text-3xl md:text-4xl font-semibold mb-4 text-blue-400">
@@ -19,19 +19,21 @@ const About = () => {
           responsive design.
         </p>
         <p className="mb-8 text-lg leading-relaxed">
-          Whether you&apos;re a casual investor or a crypto enthusiast, Coniq makes
-          it simple to stay updated on top cryptocurrencies, explore exchanges,
-          discover NFTs, and personalize your watchlist — all in one place.
+          Whether you&apos;re a casual investor or a crypto enthusiast, Coniq
+          makes it simple to stay updated on top cryptocurrencies, explore
+          exchanges, discover NFTs, and personalize your watchlist — all in one
+          place.
         </p>
       </section>
 
-      <div className="w-full rounded-lg overflow-hidden">
+      <div className="relative w-full h-[300px] rounded-lg overflow-hidden">
         <Image
-          src="/images/chart-img.svg"
+          src="/images/data.png"
           alt="Crypto market chart"
-          width={800}
-          height={400}
-          className="w-full h-auto object-cover"
+          className="object-cover"
+          fill
+          placeholder="blur"
+          blurDataURL="/images/data-blur.png"
         />
       </div>
     </div>
