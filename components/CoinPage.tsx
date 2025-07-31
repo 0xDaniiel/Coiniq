@@ -45,7 +45,8 @@ export default function CoinPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white text-black px-4 py-6">
+    // <div className="w-full min-h-screen bg-white text-black px-4 py-6">
+    <div className="w-full min-h-screen bg-white text-black dark:bg-black dark:text-white px-4 py-6">
       <h1 className="text-3xl font-bold  py-1 mb-6">Cryptocurrencies</h1>
 
       <div className="mb-6">
@@ -59,14 +60,14 @@ export default function CoinPage() {
           placeholder="Search coins..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-white border border-gray-300 text-black rounded px-4 py-2 w-full sm:w-64"
+          className="bg-white dark:bg-black border border-gray-300 dark:border-white/20 text-black dark:text-white rounded px-4 py-2 w-full sm:w-64"
         />
 
         {/* Filter dropdown on the right */}
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="bg-white border border-gray-300 text-black rounded px-4 py-2"
+          className="bg-white dark:bg-black border border-gray-300 dark:border-white/20 text-black dark:text-white rounded px-4 py-2"
         >
           <option value="all">All Coins</option>
           <option value="top100">Top 100 by Market Cap</option>
@@ -76,10 +77,10 @@ export default function CoinPage() {
 
       {loading ? (
         <div className="space-y-2 animate-pulse">
-          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-6 bg-gray-200 dark:bg-white/10 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 dark:bg-white/10  rounded w-full"></div>
+          <div className="h-4 bg-gray-200  dark:bg-white/10 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 dark:bg-white/10  rounded w-3/4"></div>
         </div>
       ) : (
         <CoinTable

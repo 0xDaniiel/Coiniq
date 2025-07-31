@@ -29,13 +29,13 @@ export default function NftsPage() {
   );
 
   return (
-    <div className="w-full px-4 py-6 bg-white text-black min-h-screen">
+    <div className="w-full px-4 py-6 bg-white text-black dark:bg-black dark:text-white min-h-screen">
       <h1 className="text-3xl font-bold mb-6 py-1">NFT Market</h1>
 
       <input
         type="text"
         placeholder="Search NFTs..."
-        className="mb-6 bg-white px-4 py-2 rounded border border-gray-300 text-black w-full sm:w-64"
+        className="mb-6 bg-white text-black dark:bg-gray-900 dark:text-white px-4 py-2 rounded border border-gray-300 dark:border-gray-700 w-full sm:w-64"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -44,10 +44,10 @@ export default function NftsPage() {
 
       {loading ? (
         <div className="space-y-2 animate-pulse">
-          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
         </div>
       ) : (
         <NftTable nfts={filtered} />

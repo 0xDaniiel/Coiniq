@@ -27,10 +27,19 @@ export default function ExchangeHighlights({
     (a, b) => b[1] - a[1]
   )[0]?.[0];
 
-  const colorMap: Record<string, string> = {
-    volume: "bg-blue-100 text-blue-700",
-    trust: "bg-green-100 text-green-700",
-    country: "bg-yellow-100 text-yellow-700",
+  const colorMap: Record<string, { light: string; dark: string }> = {
+    volume: {
+      light: "bg-blue-100 text-blue-700",
+      dark: "dark:bg-blue-900 dark:text-blue-100",
+    },
+    trust: {
+      light: "bg-green-100 text-green-700",
+      dark: "dark:bg-green-900 dark:text-green-100",
+    },
+    country: {
+      light: "bg-yellow-100 text-yellow-700",
+      dark: "dark:bg-yellow-900 dark:text-yellow-100",
+    },
   };
 
   const Card = ({
@@ -47,7 +56,8 @@ export default function ExchangeHighlights({
     colorKey: "volume" | "trust" | "country";
   }) => (
     <div
-      className={`flex items-center gap-4 p-4 rounded-2xl shadow-md cursor-pointer border border-gray-100 w-full sm:w-1/3 hover:shadow-lg transition min-h-[120px] ${colorMap[colorKey]}`}
+      className={`flex items-center gap-4 p-4 rounded-2xl shadow-md cursor-pointer border w-full sm:w-1/3 hover:shadow-lg transition min-h-[120px]
+    ${colorMap[colorKey].light} ${colorMap[colorKey].dark} border-gray-100 dark:border-gray-800`}
     >
       {image && (
         <Image

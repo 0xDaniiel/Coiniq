@@ -4,8 +4,8 @@ import type { NFT } from "@/types/nft";
 export default function NftTable({ nfts }: { nfts: NFT[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full text-sm border border-gray-200 rounded">
-        <thead className="bg-gray-100 text-left font-semibold text-gray-600">
+      <table className="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded">
+        <thead className="bg-gray-100 dark:bg-black dark:outline text-left font-semibold text-gray-600 dark:text-gray-300">
           <tr>
             <th className="px-4 py-2">Name</th>
             <th className="px-4 py-2">Floor Price</th>
@@ -16,9 +16,12 @@ export default function NftTable({ nfts }: { nfts: NFT[] }) {
             <th className="px-4 py-2">Verified</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
           {nfts.map((nft: NFT) => (
-            <tr key={nft.id} className="hover:bg-gray-50">
+            <tr
+              key={nft.id}
+              className="hover:bg-gray-50 dark:hover:bg-black transition"
+            >
               <td className="px-4 py-3 flex items-center gap-2">
                 {nft.image?.small && (
                   <Image
@@ -31,14 +34,16 @@ export default function NftTable({ nfts }: { nfts: NFT[] }) {
                 )}
                 <span>{nft.name}</span>
               </td>
-              <td className="px-4 py-3 bg-green-100 text-green-600">
+              <td className="px-4 py-3 bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400">
                 ${nft.floor_price?.usd?.toLocaleString() || "N/A"}
               </td>
               <td className="px-4 py-3">
                 ${nft.volume_24h_usd?.toLocaleString() || "N/A"}
               </td>
-              <td className="px-4 py-3 text-green-600 font-medium">—</td>
-              <td className="px-4 py-3 bg-blue-100 text-blue-600">
+              <td className="px-4 py-3 text-green-600 dark:text-green-400 font-medium">
+                —
+              </td>
+              <td className="px-4 py-3 bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400">
                 {nft.total_supply?.toLocaleString() ?? "N/A"}
               </td>
               <td className="px-4 py-3">
@@ -46,11 +51,11 @@ export default function NftTable({ nfts }: { nfts: NFT[] }) {
               </td>
               <td className="px-4 py-3">
                 {nft.is_verified ? (
-                  <span className="text-green-600 font-medium">
+                  <span className="text-green-600 dark:text-green-400 font-medium">
                     ✅ Verified
                   </span>
                 ) : (
-                  "—"
+                  <span className="text-gray-500 dark:text-gray-400">—</span>
                 )}
               </td>
             </tr>

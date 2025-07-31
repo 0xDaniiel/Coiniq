@@ -48,7 +48,7 @@ export default function HomePage() {
     "$" + num.toLocaleString(undefined, { maximumFractionDigits: 0 });
 
   return (
-    <div className="bg-white text-black min-h-screen px-6 py-8 w-full">
+    <div className="bg-white dark:bg-black text-black dark:text-white min-h-screen px-6 py-8 w-full">
       <h1 className="text-3xl font-bold py-1 mb-6">Coiniq Overview</h1>
 
       {/* Stats Cards */}
@@ -92,7 +92,7 @@ export default function HomePage() {
       {/* Pie Chart and Movers */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
         {/* Pie Chart */}
-        <div className="bg-white rounded-2xl p-4 border shadow w-full h-[300px]">
+        <div className="bg-white dark:bg-black rounded-2xl p-4 border dark:border-gray-700 shadow w-full h-[300px]">
           <h2 className="text-lg font-semibold mb-4">Market Share</h2>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -120,7 +120,7 @@ export default function HomePage() {
         </div>
 
         {/* Top Movers */}
-        <div className="bg-white rounded-2xl p-4 border shadow w-full">
+        <div className="bg-white dark:bg-black rounded-2xl p-4 border dark:border-gray-700 shadow w-full">
           <h2 className="text-lg font-semibold mb-4">Top Movers (24h)</h2>
           <ul className="space-y-3">
             {topCoins.map((c) => (
@@ -136,14 +136,13 @@ export default function HomePage() {
                     height={24}
                     className="rounded-full"
                   />
-
                   <span className="font-medium">{c.name}</span>
                 </div>
                 <span
                   className={`text-sm font-semibold ${
                     c.price_change_percentage_24h >= 0
-                      ? "text-green-600 "
-                      : "text-red-600 "
+                      ? "text-green-500"
+                      : "text-red-500"
                   }`}
                 >
                   {c.price_change_percentage_24h?.toFixed(2)}%
@@ -157,16 +156,17 @@ export default function HomePage() {
   );
 }
 
+// Color classes for light and dark
+const colorClasses: Record<CardProps["color"], string> = {
+  blue: "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300",
+  green: "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300",
+  red: "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300",
+};
+
 type CardProps = {
   title: string;
   value: string | number;
   color: "blue" | "green" | "red";
-};
-
-const colorClasses: Record<CardProps["color"], string> = {
-  blue: "bg-blue-100 text-blue-700",
-  green: "bg-green-100 text-green-700",
-  red: "bg-red-100 text-red-700",
 };
 
 const Card = ({ title, value, color }: CardProps) => (

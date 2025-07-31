@@ -47,7 +47,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} text-gray-100`}>
+      <head>
+        {/* Dark mode detection script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem("theme");
+                if (theme === "dark") {
+                  document.documentElement.classList.add("dark");
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body
+        className={`${roboto.className} bg-white text-black dark:bg-black dark:text-white transition-colors`}
+      >
         <SidebarProvider>
           <div className="flex min-h-screen">
             <AppSidebar />

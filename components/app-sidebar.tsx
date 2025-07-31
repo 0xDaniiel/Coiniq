@@ -35,9 +35,12 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="bg-white dark:bg-sidebar border-r border-black/10 dark:border-white/10 flex flex-col justify-between">
-      <SidebarContent className="bg-white dark:bg-sidebar flex-1">
+      <SidebarContent className="bg-white dark:bg-black flex-1">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-black dark:text-white font-semibold">
+          <SidebarGroupLabel
+            className="text-2xl md:text-4xl font-semibold text-blue-400 py-6
+          mb-5"
+          >
             Coniq
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -46,11 +49,11 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    className="text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition"
+                    className="text-black dark:text-white hover:bg-black dark:hover:bg-white/10 rounded-md transition"
                   >
                     <Link href={item.url}>
                       <item.icon className="w-5 h-5" />
-                      <span className="text-lg">{item.title}</span>
+                      <span className="text-[0.95rem]">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

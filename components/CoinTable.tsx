@@ -19,7 +19,8 @@ export default function CoinTable({
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm text-left text-gray-500 border">
-        <thead className="bg-gray-100 text-xs uppercase text-gray-700">
+        {/* <thead className="bg-gray-100 text-xs uppercase text-gray-700"> */}
+        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-black dark:outline-1 dark:text-gray-200">
           <tr>
             <th className="px-4 py-3">#</th>
             <th className="px-4 py-3">Coin</th>
@@ -37,9 +38,11 @@ export default function CoinTable({
             <tr
               key={coin.id}
               onClick={() => onCoinClick(coin.id)}
-              className="hover:bg-gray-50 cursor-pointer border-b"
+              className="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b dark:border-gray-900"
             >
-              <td className="px-4 py-3">{coin.market_cap_rank}</td>
+              <td className="px-4 py-3 text-gray-900 dark:text-gray-100">
+                {coin.market_cap_rank}
+              </td>
               <td className="px-4 py-3 flex items-center gap-2">
                 <Image
                   src={coin.image}
@@ -81,10 +84,11 @@ export default function CoinTable({
                   {coin.price_change_percentage_24h.toFixed(2)}%
                 </span>
               </td>
-              <td className="px-4 py-3 bg-blue-100 text-blue-700">
+              <td className="px-4 py-3 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
                 {formatMarketCap(coin.market_cap)}
               </td>
-              <td className="px-4 py-3 bg-green-100 text-green-700">
+
+              <td className="px-4 py-3 bg-green-100 text-green-700  dark:bg-green-900 dark:text-green-300">
                 ${coin.total_volume.toLocaleString()}
               </td>
               <td className="px-4 py-3">

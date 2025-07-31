@@ -29,9 +29,9 @@ export default function ExchangePage() {
     );
 
   return (
-    <div className="w-full px-4 py-6 bg-white min-h-screen text-black">
-      <h1 className="text-3xl font-bold  py-1 mb-6">Exchanges</h1>
-      <p className="text-gray-600 mb-4">
+    <div className="w-full px-4 py-6 min-h-screen bg-white text-black dark:bg-black dark:text-white">
+      <h1 className="text-3xl font-bold py-1 mb-6">Exchanges</h1>
+      <p className="text-gray-600 dark:text-gray-300 mb-4">
         Explore top crypto exchanges. Data sorted by 24h volume.
       </p>
 
@@ -44,21 +44,21 @@ export default function ExchangePage() {
           placeholder="Search exchanges..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-white border border-gray-300 text-black rounded px-4 py-2 w-full sm:w-64"
+          className="bg-white text-black dark:bg-black dark:text-white dark:border-gray-700 border border-gray-300 rounded px-4 py-2 w-full sm:w-64"
         />
 
         {/* Sort and Filter on the right */}
         <div className="flex gap-3">
           <button
             onClick={() => setSortAsc(!sortAsc)}
-            className="bg-black text-white px-4 py-2 rounded hover:bg-blue-800 cursor-pointer transition"
+            className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded hover:bg-blue-800 dark:hover:bg-blue-400 transition"
           >
             Sort by volume {sortAsc ? "↓" : "↑"}
           </button>
           <select
             value={topFilter}
             onChange={(e) => setTopFilter(e.target.value as "all" | "top10")}
-            className="bg-white border border-gray-300 text-black rounded px-4 py-2"
+            className="bg-white text-black dark:bg-black dark:text-white dark:border-gray-700 border border-gray-300 rounded px-4 py-2"
           >
             <option value="all">All Exchanges</option>
             <option value="top10">Top 10 by Trust Score</option>
@@ -68,10 +68,10 @@ export default function ExchangePage() {
 
       {loading ? (
         <div className="space-y-2 animate-pulse">
-          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded w-1/4"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
         </div>
       ) : (
         <ExchangeTable exchanges={filtered} />

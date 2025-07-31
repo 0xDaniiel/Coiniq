@@ -31,10 +31,10 @@ export default function CoinModal({ coin, onClose }: CoinModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-white text-black rounded-2xl shadow-2xl w-full max-w-md relative p-6 space-y-4">
+      <div className="bg-white dark:bg-black text-black dark:text-gray-100 rounded-2xl shadow-2xl w-full max-w-md relative p-6 space-y-4">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-black"
+          className="absolute top-4 right-4 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
         >
           <X />
         </button>
@@ -48,12 +48,12 @@ export default function CoinModal({ coin, onClose }: CoinModalProps) {
             className="rounded mb-2"
           />
           <h2 className="text-2xl font-bold">{name}</h2>
-          <p className="uppercase text-sm text-gray-600 tracking-wide">
+          <p className="uppercase text-sm text-gray-600 dark:text-gray-400 tracking-wide">
             {symbol}
           </p>
         </div>
 
-        <div className="space-y-2 text-sm border-t pt-4 text-gray-700">
+        <div className="space-y-2 text-sm border-t border-gray-200 dark:border-gray-700 pt-4 text-gray-700 dark:text-gray-200">
           <InfoRow label="Rank" value={`#${market_cap_rank || "N/A"}`} />
           <InfoRow
             label="Current Price"
@@ -107,11 +107,13 @@ function InfoRow({
   return (
     <div>
       <div className="flex justify-between font-medium">
-        <span className="text-gray-600">{label}</span>
-        <span className="text-gray-800">{value}</span>
+        <span className="text-gray-600 dark:text-gray-400">{label}</span>
+        <span className="text-gray-800 dark:text-gray-100">{value}</span>
       </div>
       {sub && (
-        <div className="text-xs text-gray-500 mt-0.5 text-right">{sub}</div>
+        <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 text-right">
+          {sub}
+        </div>
       )}
     </div>
   );
