@@ -1,56 +1,39 @@
-# 🪙 Coniq — Real-time Crypto Tracker & Charts
+# 🪙 Coiniq — Real-Time Crypto, Exchange & NFT Tracker
 
-Coniq is a web app built with **Next.js** that lets users:
-
-- Track real-time prices of the top 10 cryptocurrencies
-- View 7-day and 30-day historical price charts
-- Search and switch between coins
-- Toggle prices in USD or BTC
+**Coiniq** is a modern web application that helps users track real-time market data for cryptocurrencies, exchanges, and NFT collections — all in one clean dashboard. Built with Next.js and powered by CoinGecko, it’s optimized for performance, dark mode, and mobile responsiveness.
 
 ---
 
-## 📦 Tech stack
+## 🚀 Features
 
-- **Next.js** (App Router)
-- **Tailwind CSS** — styling
-- **Axios** — API requests
-- **Chart.js** (via react-chartjs-2) — charts
-- **CoinGecko API** — public crypto data
-
----
-
-## ⚙️ Features
-
-- Show real-time prices and market data
-- Historical price charts
-- Dynamic coin pages (`/coin/[id]`)
-- Search bar to filter coins
-- USD / BTC toggle (planned)
+- ✅ **Live Market Data**: Track top coins by market cap with 1h, 24h, and 7d performance.
+- 📊 **Interactive Charts**: View 7-day and 30-day sparkline price charts.
+- 🔍 **Search & Filter**: Quickly search and sort cryptocurrencies or exchanges.
+- 💱 **Exchange Tracker**: View top exchanges with volume, trust scores, and more.
+- 🖼️ **NFT Dashboard**: Track trending NFT collections with floor prices, volume, and ownership data.
+- 🌙 **Dark Mode**: Seamless dark theme toggle across the entire app.
+- 📱 **Responsive UI**: Clean, mobile-friendly layout for all screen sizes.
 
 ---
 
-## 📂 Project structure
+## 🧱 Tech Stack
 
-```
-/app
-├── page.tsx → Homepage
-├── coin/[id]/page.tsx → Dynamic coin detail page
-/components
-├── CryptoList.tsx → List of coins on homepage
-├── Chart.tsx → Chart component
-├── Searchbar.tsx → Search bar
-/lib
-└── api.ts → Functions to call CoinGecko API
-/public
-└── favicon.ico
-/styles
-└── globals.css
+- **Next.js (App Router)** — Framework
+- **Tailwind CSS** — Utility-first styling
+- **TypeScript** — Type safety
+- **Recharts** — Price sparklines
+- **Axios** — API fetching
+- **CoinGecko API** — Crypto, Exchange & NFT data
+- **Heroicons / Lucide** — Icons and UI elements
 
-## 📈 Data source
-```
+---
 
-- [CoinGecko API](https://www.coingecko.com/en/api) — free, no API key required
+## 📡 API Source
 
-## 📄 License
+Data is sourced live from:
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+- [CoinGecko API](https://www.coingecko.com/en/api)
+  - No API key required
+  - Supports crypto, exchanges, and NFT endpoints
+
+---

@@ -12,7 +12,7 @@ const CTA = () => {
         signup required.
       </p>
       <Link
-        href="/"
+        href="https://coiniq-git-data-daniels-projects-6d27f7a3.vercel.app/"
         className="inline-block px-6 py-3 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300"
       >
         Start Tracking Now
